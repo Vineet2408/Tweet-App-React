@@ -1,0 +1,21 @@
+.logo-wrapper {
+    display: flex;
+    height: 32px;
+    width: 32px;   
+    
+}
+
+.logo-with-text-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 12px;
+    min-width: 160px;
+}
+
+.logo{
+    height: 100%;
+    width: 100%;
+    min-width: 32px;
+    border-radius: 50%;
+}

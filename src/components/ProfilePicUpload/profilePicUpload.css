@@ -1,0 +1,14 @@
+.photo-upload-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+}
+
+.photo-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+}

@@ -1,0 +1,171 @@
+@import './typography.css';
+
+body {
+  margin: 0;
+  font-family:'Segoe UI', 'Roboto' ;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+ul,li {
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.size-16 {
+  width: 16px;
+  height: 16px;
+}
+.size-32 {
+  width: 32px;
+  height: 32px;
+}
+.size-64  {
+  width: 64px;
+  height: 64px;
+}
+.size-128 {
+    width: 128px;
+    height: 128px;
+}
+.size-256 {
+  width: 256px;
+  height: 256px;
+}
+
+.visually-hidden-object {
+  border: 0px;
+  clip: rect(1px1px 1px 1px);
+  height: 0px;
+  margin : -1px;
+  overflow: hidden;
+  padding: 0px;
+  position: aboslute;
+  width: 0px;
+  white-space: nowrap;
+  z-index: 1;
+  background-color: #00000000;
+}
+
+.post-button {
+  display: flex;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: #6f3bac;
+  border: 2px solid #0059ff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  color: white;
+}
+
+.post-button:active {
+  background-color: #430788;
+  border: 2px solid #81a1db;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.post-button:focus-visible {
+  border: 2px solid #011335;
+}
+
+.get-button {
+  display: flex;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: #3ba8ac;
+  border: 2px solid #00ffb3;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  color: white;
+
+}
+
+.get-button:active {
+  background-color: #2b797c;
+  border: 2px solid #a7d4c7;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.get-button:focus-visible {
+  border: 2px solid #011335;
+}
+
+.delete-button {
+  display: flex;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: #c53530;
+  border: 2px solid #6b1b19;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  color: white;
+
+}
+
+.delete-button:active {
+  background-color: #c40a04;
+  border: 2px solid #be615d;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.delete-button:focus-visible {
+  border: 2px solid #011335;
+}
+
+.put-button {
+  display: flex;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: #308ac5;
+  border: 2px solid #1c4d6d;
+  box-shadow: rgba(144, 144, 248, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  color: white;
+}
+
+.put-button:active {
+  background-color: #0177c5;
+  border: 2px solid #72a2c2;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.put-button:focus-visible {
+  border: 2px solid #011335;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: rgba(144, 144, 248, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
