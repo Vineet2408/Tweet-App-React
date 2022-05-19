@@ -1,0 +1,7 @@
+
+
+.double-button-toggle-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 4px 8px;
+}
