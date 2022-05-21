@@ -1,0 +1,29 @@
+
+.hashTag {
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 8px;
+    color: #0875e1;
+}
+
+.tweet-wrapper {
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border: 2px solid grey;
+}
+
+.voting-section {
+    display: flex;
+    flex-direction: row;
+    column-gap: 24px;
+    align-items: center;
+    padding: 16px;
+}
+
+.tweet-votes {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    align-items: center;
+}

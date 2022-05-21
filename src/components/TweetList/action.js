@@ -4,7 +4,7 @@ export const GET_ALL_TWEETS = 'GET_ALL_TWEETS';
 
 export const GET_ALL_TWEETS_OF_USER = 'GET_ALL_TWEETS_OF_USER';
 
-
+import { GET_ALL_TWEETS_API, GET_ALL_TWEETS_OF_USER_API } from "../../constants/api";
 
 export const getAllTweets = () => function(dispatch) {
 
@@ -22,11 +22,12 @@ export const getAllTweets = () => function(dispatch) {
     .catch((error) => console.log(error))
 }
 
-export const getAllTweetsOfUser = (user) => function (dispatch) {
+export const getAllTweetsOfUser = (username, token) => function (dispatch) {
 
     const axiosConfig = {
         method: 'get',
-        url: GET_ALL_TWEETS_OF_USER_API+user.username
+        url: GET_ALL_TWEETS_OF_USER_API+username,
+        token: token
     }
 
     axios(axiosConfig)

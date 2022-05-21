@@ -1,7 +1,5 @@
 import React from 'react';
 
-import TextInput from '../UI/Inputs/TextInput';
-
 import './searchBar.css';
 
 const SearchBar = (properties) => {

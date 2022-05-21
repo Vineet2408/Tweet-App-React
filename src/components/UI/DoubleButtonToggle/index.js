@@ -14,14 +14,14 @@ const DoubleButtonToggle = (properties) => {
         <div className="double-button-toggle-wrapper" style={wrapperStyle}>
             <button
                 type="button"
-                className={'toggle-button'+ toggled ? 'toggle-button-active' : ''}
+                className={'toggle-button'+ (toggled ? ' toggle-button-active' : '')}
                 onClick={firstButtonClick}
             >
                 {properties.firstButtonName}
             </button>
             <button
                 type="button"
-                className={'toggle-button'+ (!toggled ? 'toggle-button-active' : '')}
+                className={'toggle-button'+ (!toggled ? ' toggle-button-active' : '')}
                 onClick={secondButtonClick}
             >
                 {properties.secondButtonName}

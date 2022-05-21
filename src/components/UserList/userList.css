@@ -1,0 +1,18 @@
+.userList {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    justify-content: space-between;
+    grid-row-gap: 16px;
+    padding: 16px;
+    min-width: 900px;
+}
+
+@media (max-width: 767px) {
+    .userList {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+        padding: 16px;
+        max-width: 500px;
+    }
+}
