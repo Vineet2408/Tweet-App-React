@@ -76,7 +76,7 @@ ul,li {
 
 .post-button {
   display: flex;
-  padding: 12px 16px;
+  padding: 8px 16px;
   border-radius: 12px;
   background-color: #6f3bac;
   border: 2px solid #0059ff;
@@ -96,7 +96,7 @@ ul,li {
 
 .get-button {
   display: flex;
-  padding: 12px 16px;
+  padding: 8px 16px;
   border-radius: 12px;
   background-color: #3ba8ac;
   border: 2px solid #00ffb3;
@@ -117,7 +117,7 @@ ul,li {
 
 .delete-button {
   display: flex;
-  padding: 12px 16px;
+  padding: 8px 16px;
   border-radius: 12px;
   background-color: #c53530;
   border: 2px solid #6b1b19;
@@ -138,7 +138,7 @@ ul,li {
 
 .put-button {
   display: flex;
-  padding: 12px 16px;
+  padding: 8px 16px;
   border-radius: 12px;
   background-color: #308ac5;
   border: 2px solid #1c4d6d;
@@ -156,9 +156,48 @@ ul,li {
   border: 2px solid #011335;
 }
 
+.toggle-button-wrapper {
+  display: flex;
+}
+.toggle-button {
+  border-radius: 12px;
+  background-color: chocolate;
+  padding: 8px 16px;
+  display: flex;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.toggle-button-active {
+  background-color: greenyellow;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.toggle-button-active::after {
+  height: 14px;
+  width: 100%;
+  background-color: green;
+}
+
+.toggle-add-post-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  padding: 6px 4px 4px 4px;
+  /* box-sizing: border-box; */
+}
+
 .justify-center {
   display: flex;
   justify-content: center;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card {
@@ -168,4 +207,38 @@ ul,li {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.text-input {
+  border-radius: 12px;
+  padding: 8px 16px;
+  border: 2px solid #0059ff;
+}
+
+.select-input {
+  border-radius: 12px;
+  padding: 8px 16px;
+  border: 2px solid #0059ff;
+}
+
+.clgp-8 {
+  row-gap: 8px;
+}
+.clgp-16 {
+  row-gap: 16px;
+}
+
+.rowgp-8 {
+  column-gap: 8px;
+}
+.rowgp-16 {
+  column-gap: 16px;
+}
+
+.rowgp-24 {
+  column-gap: 24px;
+}
+
+.min-wid-80 {
+  min-width: 80%;
 }

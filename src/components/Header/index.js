@@ -13,7 +13,6 @@ export const LoggedInNav = (properties) => {
 				<button
 					className='header-navigation-button'
 					type='button'
-					onClick={loggedInToggle}
 				>
 					Tweets
 				</button>
@@ -22,7 +21,6 @@ export const LoggedInNav = (properties) => {
 				<button
 					className='header-navigation-button'
 					type='button'
-					onClick={loggedInToggle}
 				>
 					All Users
 				</button>
@@ -38,7 +36,6 @@ export const LoggedOutNav = (properties) => {
 				<button
 					className='header-navigation-button'
 					type='button'
-					onClick={loggedOutToggle}
 				>
 					Login
 				</button>
@@ -47,7 +44,6 @@ export const LoggedOutNav = (properties) => {
 				<button
 					className='header-navigation-button'
 					type='button'
-					onClick={loggedOutToggle}
 				>
 					Register
 				</button>
@@ -57,8 +53,6 @@ export const LoggedOutNav = (properties) => {
 };
 const Header = (properties) => {
 	const {
-		loggedInToggle,
-		loggedOutToggle,
 		searchInputHandler,
 		profilePicSrc,
 	} = properties;
@@ -66,6 +60,8 @@ const Header = (properties) => {
 	const showMenuModel = (event) => {
 		event.preventDefault();
 	};
+
+	const isUserLoggedIn = localStorage.getItem('isUserLoggedIn');
 
 	return (
 		<div className='header'>
@@ -89,7 +85,16 @@ const Header = (properties) => {
 			<div className='bottom-row-header'>
 				<nav className='d-flex'>
 					<Routes>
-						<Route path='/auth/*' element={<h1>h</h1>} />
+						<Route path='/auth/*' element={<LoggedOutNav />} />
+						{ isUserLoggedIn && (
+							<Route path='/*' element={<LoggedInNav />} />
+
+						)}
+						{
+							!isUserLoggedIn && (
+								<Route path='/*' element={<LoggedOutNav />} />
+							)
+						}
 					</Routes>
 				</nav>
 			</div>

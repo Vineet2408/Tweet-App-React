@@ -1,7 +1,15 @@
 import React from 'react';
 
-const UserAllTweetPage = (properties) => {
+import { Navigate } from 'react-router';
 
+import { redirectUser } from '../../services/loginService';
+
+const UserAllTweetPage = (properties) => {
+    const navigate =  useNavigate();
+    React.useEffect(()=> {
+        redirectUser(navigate);
+    },[]);
+	
     
     return (
         <div>

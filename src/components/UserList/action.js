@@ -1,9 +1,9 @@
 import axios from "axios";
+import { GET_USER_BY_USERNAME_API, GET_ALL_USERS_API } from "../../constants/api";
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 
 export const GET_USER_BY_USERNAME = 'GET_USER_BY_USERNAME';
-
 
 
 export const getAllUsers = () => function (dispatch) {

@@ -20,7 +20,7 @@ p {
 label {
     font-size: 16px;
     font-weight: 500;
-    padding: 2px 10px 2px 10px;
+    padding: 2px 4px 2px 4px;
 }
 
 body {
@@ -30,4 +30,24 @@ body {
 button {
     font-size: 16px;
     font-weight: 500;
+}
+
+.tweet-username {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.tweet-tweetedTo {
+    font-size: 16px;
+    font-size: 500;
+}
+
+.tweet-message {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.tweet-votes-counts {
+    font-size: 14px;
+    font-weight: 400;
 }

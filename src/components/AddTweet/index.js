@@ -1,5 +1,4 @@
 import React from 'react';
-import TextAreaAutoGrow from '../UI/Inputs/TextAreaAutoGrow';
 
 import './addTweet.css';
 
@@ -35,7 +34,8 @@ const AddTweet = () => {
                 <div className="add-tweet-form-section">
                 
                     <form onSubmit={addTweetSubmitHanlder} className="add-tweet-form">
-                        <TextAreaAutoGrow name="message" type="text" placeholder="Message" label="Add a Tweet" />
+                        <label htmlFor="message">Add a Tweet</label>
+                        <textarea className="text-input" name="message" type="text" placeholder="Message" label="Add a Tweet" required />
                         <div className="flex-end-button">
                             <button
                                 type="submit"
