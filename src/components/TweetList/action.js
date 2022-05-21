@@ -1,10 +1,10 @@
 import axios from "axios";
+import { GET_ALL_TWEETS_API, GET_ALL_TWEETS_OF_USER_API } from "../../constants/api";
 
 export const GET_ALL_TWEETS = 'GET_ALL_TWEETS';
 
 export const GET_ALL_TWEETS_OF_USER = 'GET_ALL_TWEETS_OF_USER';
 
-import { GET_ALL_TWEETS_API, GET_ALL_TWEETS_OF_USER_API } from "../../constants/api";
 
 export const getAllTweets = () => function(dispatch) {
 

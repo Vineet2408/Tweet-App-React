@@ -1,9 +1,9 @@
 import axios from "axios";
 
+import { REGISTER_USER_API } from "../../constants/api";
 
 export const REGISTER_USER = 'REGISTER_USER';
 
-import { REGISTER_USER_API } from "../../constants/api";
 
 export const registerUser = (userData) => function(dispatch) {
 

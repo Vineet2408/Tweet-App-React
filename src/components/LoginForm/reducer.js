@@ -1,9 +1,9 @@
+import { LOGIN_USER, LOGOUT_USER } from "./action";
+
 let initialState = {
     token:null,
     userId:null,
 };
-
-import { LOGIN_USER, LOGOUT_USER } from "./action"
 
 export const loginReducer = (state =initialState, action) => {
 

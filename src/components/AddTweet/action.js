@@ -1,7 +1,9 @@
-export const ADD_TWEET = 'ADD_TWEET';
 
 import axios from "axios";
 import { ADD_TWEET_API } from "../../constants/api";
+
+export const ADD_TWEET = 'ADD_TWEET';
+
 export const addTweet = (tweetData) => function (dispatch) {
 
     const axiosConfig = {
