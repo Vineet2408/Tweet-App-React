@@ -17,6 +17,7 @@ export const loginUser = (userCreds) => function (dispatch) {
 
     axios(axiosConfig)
     .then((response) => {
+        console.log(response.data);
         dispatch({
             payload:response.data,
             type: LOGIN_USER

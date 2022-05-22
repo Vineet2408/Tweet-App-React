@@ -6,11 +6,11 @@ let initialState = {
 };
 
 export const loginReducer = (state =initialState, action) => {
-
+    let newState;
     switch(action.type) {
 
         case LOGIN_USER:
-            let newState = {
+            newState = {
                 ...state,
                 ...action.payload,
                 isUserLoggedIn: true
@@ -21,7 +21,7 @@ export const loginReducer = (state =initialState, action) => {
             return newState;
 
         case LOGOUT_USER:
-            let newState = {
+            newState = {
                 ...action.payload,
                 ...initialState
             }

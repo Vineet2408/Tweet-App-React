@@ -7,6 +7,10 @@ import DoubleButtonToggle from '../UI/DoubleButtonToggle';
 
 import { loginUser } from './action';
 
+import { LOGIN_USER_API } from '../../constants/api';
+
+import axios from 'axios';
+
 import './loginForm.css';
 
 const LoginForm = (properties) => {
@@ -88,7 +92,17 @@ const LoginForm = (properties) => {
         else {
             if (email.trim().length > 5  && password.trim().length > 5) {
                 const loginData = {email,password};
-                dispatch(loginUser(loginData));
+                // dispatch(loginUser(loginData));
+                const axiosConfig = {
+                    data:{email,password},
+                    method: 'post',
+                    url: LOGIN_USER_API
+                }
+            
+                axios(axiosConfig)
+                .then((response) => {
+                    console.log(response.data);
+                }).catch((error)=> console.log(error));
             }
             else {
                 setShowError(true);

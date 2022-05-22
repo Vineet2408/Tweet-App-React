@@ -7,7 +7,7 @@ export const REGISTER_USER = 'REGISTER_USER';
 
 export const registerUser = (userData) => function(dispatch) {
 
-    axiosConfig={
+    let axiosConfig={
         data: userData,
         method: 'post',
         url:REGISTER_USER_API
