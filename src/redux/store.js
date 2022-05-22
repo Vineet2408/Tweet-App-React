@@ -6,9 +6,11 @@ import rootReducer from "./reducers";
 
 const configureStore = (preloadedState) => {
 
-    const composedEnhancer = applyMiddleware(ThunkMiddleware);
+    const middlewares = [ThunkMiddleware];
 
-    const store = createStore(rootReducer, composedEnhancer);
+    const composedEnhancer = applyMiddleware(...middlewares);
+
+    const store = createStore(rootReducer,preloadedState, composedEnhancer);
 
     return store;
 }

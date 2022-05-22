@@ -1,35 +1,36 @@
+import { UPDATE_TWEET, DELETE_TWEET, LIKE_TWEET, REPLY_TO_TWEET, GET_REPLIES_OF_TWEET } from "./action";
+
 
 
 let initialState = {};
 
-import { UPDATE_TWEET, DELETE_TWEET, LIKE_TWEET, REPLY_TO_TWEET, GET_REPLIES_OF_TWEET } from "./action";
-
 export const tweetReducer = (state = initialState, action) => {
 
+    let newState;
     switch(action.type) {
 
         case UPDATE_TWEET:
-            let newState = {
+            newState = {
                 ...state,
                 ...action.payload
             }
             return newState;
         
         case DELETE_TWEET:
-            let newState = {
+            newState = {
                 ...state,
                 ...action.payload
             }
             return newState;
         case LIKE_TWEET:
-            let newState = {
+            newState = {
                 ...state,
                 ...action.payload
             }
             return newState;
         
         case LIKE_TWEET:
-            let newState = {
+            newState = {
                 ...state,
                 ...action.payload
             }
