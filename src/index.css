@@ -29,6 +29,10 @@ ul,li {
   display: flex;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -156,6 +160,27 @@ ul,li {
   border: 2px solid #011335;
 }
 
+.normal-button {
+  display: flex;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background-color: #000000;
+  border: 2px solid #ffffff;
+  box-shadow: rgba(144, 144, 248, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  color: white;
+}
+
+.normal-button:active {
+  background-color: #c0c0c0;
+  border: 2px solid #72a2c2;
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.normal-button:focus-visible {
+  border: 2px solid #011335;
+}
+
 .toggle-button-wrapper {
   display: flex;
 }
@@ -200,6 +225,29 @@ ul,li {
   justify-content: space-between;
 }
 
+.backdrop {
+  height: 200vh;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
+.modal {
+  position: fixed;
+  top: calc(50% - 200px);
+  /* bottom: 0px; */
+  left: calc(50% - 200px);
+  margin-bottom: 24px;
+  margin-top: 24px;
+  width: 400px;
+  height: 400px;
+  background: white;
+}
+
+
 .card {
   border-radius: 12px;
   box-shadow: rgba(144, 144, 248, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -211,14 +259,19 @@ ul,li {
 
 .text-input {
   border-radius: 12px;
-  padding: 8px 16px;
+  padding: 16px 24px;
   border: 2px solid #0059ff;
+  font-size: 16px;
+  min-width: 260px;
 }
 
 .select-input {
   border-radius: 12px;
-  padding: 8px 16px;
+  padding: 16px 24px;
   border: 2px solid #0059ff;
+  font-size: 16px;
+  min-width: 300px;
+
 }
 
 .clgp-8 {

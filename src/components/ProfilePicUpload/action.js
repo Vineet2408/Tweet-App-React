@@ -1,6 +1,5 @@
 
 import axios from "axios";
-import { response } from "spdy";
 import { PHOTO_UPLOAD_API } from "../../constants/api";
 
 export const PHOTO_UPLOAD = 'PHOTO_UPLOAD';

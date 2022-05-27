@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 
 import { emailRegex } from '../../constants/regex';
 import DoubleButtonToggle from '../UI/DoubleButtonToggle';
@@ -12,6 +12,8 @@ import { LOGIN_USER_API } from '../../constants/api';
 import axios from 'axios';
 
 import './loginForm.css';
+
+
 
 const LoginForm = (properties) => {
 
@@ -91,18 +93,11 @@ const LoginForm = (properties) => {
         }
         else {
             if (email.trim().length > 5  && password.trim().length > 5) {
-                const loginData = {email,password};
+                const loginData = {id:email,password};
                 // dispatch(loginUser(loginData));
-                const axiosConfig = {
-                    data:{email,password},
-                    method: 'post',
-                    url: LOGIN_USER_API
-                }
+                
             
-                axios(axiosConfig)
-                .then((response) => {
-                    console.log(response.data);
-                }).catch((error)=> console.log(error));
+                dispatch(loginUser(loginData))
             }
             else {
                 setShowError(true);

@@ -4,26 +4,22 @@ import ProfilePic from '../UI/ProfilePic';
 import SearchBar from '../SearchBar';
 
 import './header.css';
-import { Route, Routes } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 
+import MenuModal from './MenuModal';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../LoginForm/action';
+// className='header-navigation-button'
 export const LoggedInNav = (properties) => {
 	return (
 		<ul className='header-list-navigation'>
 			<li className='header-list-item-navigation'>
-				<button
-					className='header-navigation-button'
-					type='button'
-				>
-					Tweets
-				</button>
+				<NavLink to="/tweets">Tweets</NavLink>
 			</li>
 			<li className='header-list-item-navigation'>
-				<button
-					className='header-navigation-button'
-					type='button'
-				>
-					All Users
-				</button>
+				<NavLink to="/users">All Users</NavLink>
+				
 			</li>
 		</ul>
 	);
@@ -33,35 +29,43 @@ export const LoggedOutNav = (properties) => {
 	return (
 		<ul className='header-list-navigation'>
 			<li className='header-list-item-navigation'>
-				<button
-					className='header-navigation-button'
-					type='button'
-				>
-					Login
-				</button>
+				<NavLink to="/auth/login">Login</NavLink>
 			</li>
 			<li className='header-list-item-navigation'>
-				<button
-					className='header-navigation-button'
-					type='button'
-				>
-					Register
-				</button>
+				<NavLink to="/auth/register">Register</NavLink>
+				
 			</li>
 		</ul>
 	);
 };
 const Header = (properties) => {
+
+	const dispatch = useDispatch();
 	const {
 		searchInputHandler,
 		profilePicSrc,
 	} = properties;
 
+	const [showmodal, setShowModal] = React.useState(false);
+
 	const showMenuModel = (event) => {
 		event.preventDefault();
+
+		setShowModal(!showmodal);
 	};
 
+	const logoutUserHandler = () => {
+		dispatch(logoutUser());
+	}
+
 	const isUserLoggedIn = localStorage.getItem('isUserLoggedIn');
+
+	const logoutButtonStyle = {
+		background:'none',
+		border: 'none',
+		padding:'8px 16px'
+
+	};
 
 	return (
 		<div className='header'>
@@ -80,6 +84,8 @@ const Header = (properties) => {
 					>
 						<ProfilePic profilePicSrc={profilePicSrc} size={32} />
 					</button>
+					
+					{showmodal && <MenuModal method={logoutUserHandler}/> }
 				</div>
 			</div>
 			<div className='bottom-row-header'>

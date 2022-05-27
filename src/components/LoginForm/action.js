@@ -18,20 +18,32 @@ export const loginUser = (userCreds) => function (dispatch) {
     axios(axiosConfig)
     .then((response) => {
         console.log(response.data);
-        dispatch({
-            payload:response.data,
-            type: LOGIN_USER
-        })
+        if(response.data.username !== undefined && response.data.username !== null) {
+            dispatch({
+                payload:{
+                    token:'sometoken',
+                    userId:response.data.id,
+                    isUserLoggedIn:true,
+                    username:response.data.username
+                },
+                type: LOGIN_USER
+            });
+        }
+        else {
+            console.log('login failed');
+        }
     })
     .catch((error) => console.log(error));
 }
 
-export const logoutUser = (userId) => function(dispatch) {
+export const logoutUser = () => function(dispatch) {
     dispatch({
         type:LOGOUT_USER,
         payload: {
             token:null,
-            userId:null
+            userId:null,
+            isUserLoggedIn:false,
+            username:null
         }
     });
 }

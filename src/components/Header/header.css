@@ -3,12 +3,17 @@
     border-radius: 4px;
     background-color: white;
     position: absolute;
+    top: 40px;
+    right: 2px;
 }
 
 .menu-modal-option {
     padding: 8px 16px;
     text-decoration: underline;
     text-underline-offset: 2px;
+    background-color: none;
+    border: none;
+    border-radius: 12px;
 }
 
 .menu-modal-option:active {
@@ -43,7 +48,6 @@
 
 .search-bar-section {
     display: flex;
-    flex: 10;
     justify-content: right;
 }
 

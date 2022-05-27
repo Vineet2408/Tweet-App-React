@@ -1,7 +1,7 @@
-export const ADD_TWEET_API = '';
 
-export const apiPrefix = `${process.env.REACT_APP_HOST}`;
+export const apiPrefix = `http://localhost:8080`;
 console.log(apiPrefix);
+export const ADD_TWEET_API = apiPrefix+'/api/v1.0/tweets/username/add';
 
 export const LOGIN_USER_API = apiPrefix+'/api/v1.0/tweets/login';
 
@@ -16,7 +16,7 @@ export let LIKE_TWEET_API = apiPrefix+'/api/v1.0/tweets/username/like/id';
 
 export let REPLY_TO_TWEET_API = apiPrefix+'/api/v1.0/tweets/username/reply/id';
 
-export let GET_REPLIES_OF_TWEET_API = apiPrefix+'/';
+export let GET_REPLIES_OF_TWEET_API = apiPrefix+'/api/v1.0/tweets/replies/id';
 
 export const GET_ALL_TWEETS_API = apiPrefix+'/api/v1.0/tweets/all';
 
