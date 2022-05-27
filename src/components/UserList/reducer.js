@@ -1,17 +1,18 @@
 
 import { GET_ALL_USERS, GET_USER_BY_USERNAME } from "./action"
 
-let initialState = {};
+let initialState = [];
 
 export const userListReducer = (state = initialState, action) => {
-
+    let newState ;
     switch(action.type) {
 
         case GET_ALL_USERS:
-            let newState = {
+            newState= [
                 ...state,
                 ...action.payload
-            };
+            ];
+            
             return newState;
         
         default: 

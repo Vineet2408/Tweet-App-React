@@ -18,10 +18,12 @@ const ProfilePicUpload = (properties) => {
     const photoChangeHandler = (event) => {
         console.log(event);
     }
+    let username = localStorage.getItem("username");
 
     return (
         <div className="photo-upload-wrapper">
             <ProfilePic profilePicSrc={avatarLink} size={128}/>
+            <h1 className="text-underline">{username}</h1>
             <div className="photo-upload-button-wrapper">
                 <input
                     className="visually-hidden-object"

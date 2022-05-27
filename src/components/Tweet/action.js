@@ -16,12 +16,13 @@ export const GET_REPLIES_OF_TWEET = 'GET_REPLIES_OF_TWEET';
 export const updateTweetByUsername = (username,id,tweetData) => function (dispatch) {
     
     let api = `${UPDATE_TWEET_API}`;
-    UPDATE_TWEET_API.replace('username',username);
-    UPDATE_TWEET_API.replace('id',id);
+    api = api.substring(0,api.indexOf('username'))+username+"/update/"+id;
+    console.log(api);
+    console.log('username = ',username, " id = ",id);
     const axiosConfig = {
         data: tweetData,
         method: 'put',
-        url: UPDATE_TWEET_API
+        url: api
     };
 
     axios(axiosConfig)
@@ -32,47 +33,58 @@ export const updateTweetByUsername = (username,id,tweetData) => function (dispat
 }
 
 
-export const deleteTweetByUsername = (username,id) => function (dispatch) {
-    
-    DELETE_TWEET_API.replace('username',username);
-    DELETE_TWEET_API.replace('id',id);
+export const deleteTweetByUsername = (username,id,tweet) => function (dispatch) {
+
+    console.log('username = ',username, " id = ",id);
+    let api = `${DELETE_TWEET_API}`;
+    api = api.substring(0,api.indexOf('username'))+username+"/delete/"+id;
+    console.log('api = ',api);
     const axiosConfig = {
         method: 'delete',
-        url: DELETE_TWEET_API
+        url: api
     };
 
     axios(axiosConfig)
     .then((reponse) => {
-        dispatch({ payload:reponse.data,type: DELETE_TWEET})
+        if (reponse.data ) {
+
+            dispatch({ payload:tweet,type: DELETE_TWEET});
+        }
     })
     .catch((error) => console.log(error));
 }
 
 export const likeTweetByUsername = (username,id) => function (dispatch) {
-    
-    LIKE_TWEET_API.replace('username',username);
-    LIKE_TWEET_API.replace('id',id);
+    let api = `${LIKE_TWEET_API}`;
+    api = api.substring(0,api.indexOf('username'))+username+"/like/"+id;
+
+    console.log('username = ',username, " id = ",id);
+
     const axiosConfig = {
         method: 'put',
-        url: LIKE_TWEET_API
+        url: api
     };
 
     axios(axiosConfig)
     .then((reponse) => {
-        dispatch({ payload:reponse.data,type: LIKE_TWEET})
+        console.log(reponse.data);
+        dispatch({ 
+            payload:reponse.data,
+            type: LIKE_TWEET})
     })
     .catch((error) => console.log(error));
 }
 
 
 export const replyTweetByUsername = (username,id,tweetData) => function (dispatch) {
-    
-    REPLY_TO_TWEET_API.replace('username',username);
-    REPLY_TO_TWEET_API.replace('id',id);
+    let api = `${REPLY_TO_TWEET_API}`;
+    api = api.substring(0,api.indexOf('username'))+username+"/reply/"+id;
+    console.log('username = ',username, " id = ",id);
+
     const axiosConfig = {
         data: tweetData,
         method: 'post',
-        url: REPLY_TO_TWEET_API
+        url: api
     };
 
     axios(axiosConfig)
@@ -83,16 +95,23 @@ export const replyTweetByUsername = (username,id,tweetData) => function (dispatc
 }
 
 export const getAllRepliesOfTweet = (username, id) => function(dispatch) {
-    GET_REPLIES_OF_TWEET_API.replace('username',username);
-    GET_REPLIES_OF_TWEET_API.replace('id',id);
+
+    let api = `${GET_REPLIES_OF_TWEET_API}`;
+    api = api.substring(0,api.indexOf('id'))+id;
+    console.log('username = ',username, " id = ",id);
+
     const axiosConfig = {
         method: 'get',
-        url: GET_REPLIES_OF_TWEET_API
+        url: api
     };
 
     axios(axiosConfig)
-    .then((reponse) => {
-        dispatch({ payload:reponse.data,type: GET_REPLIES_OF_TWEET})
+    .then((response) => {
+        let newData = {};
+        newData[id] = response.data;
+        console.log(newData);
+        console.log(newData[id]);
+        dispatch({ payload:newData,type: GET_REPLIES_OF_TWEET})
     })
     .catch((error) => console.log(error));
 }

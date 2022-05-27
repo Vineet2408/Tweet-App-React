@@ -17,21 +17,16 @@ import { redirectUser } from './services/loginService';
 
 import { useNavigate } from 'react-router';
 
+
+function selector(state) {
+  return state.loginReducer;
+}
+
 function App() {
 
-  let item = localStorage.getItem('isUserLoggedIn');
+  let state = useSelector(selector);
 
-  const state = useSelector(state => state.loginReducer);
-
-  if (!state || !state.isUserLoggedIn) {
-    localStorage.removeItem('isUserLoggedIn');
-    item = false;
-  }
-
-  const isUserLoggedIn = item && state.isUserLoggedIn;
-  if (isUserLoggedIn === undefined) {
-    isUserLoggedIn = false;
-  }
+  let isUserLoggedIn = state.isUserLoggedIn || localStorage.getItem('isUserLoggedIn') || false;
 
   const navigate = useNavigate();
 

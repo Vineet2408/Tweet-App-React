@@ -16,12 +16,6 @@ export const tweetReducer = (state = initialState, action) => {
             }
             return newState;
         
-        case DELETE_TWEET:
-            newState = {
-                ...state,
-                ...action.payload
-            }
-            return newState;
         case LIKE_TWEET:
             newState = {
                 ...state,
@@ -29,18 +23,13 @@ export const tweetReducer = (state = initialState, action) => {
             }
             return newState;
         
-        case LIKE_TWEET:
-            newState = {
-                ...state,
-                ...action.payload
-            }
-            return newState;
         default:
             return state;
     }
 }
 
-export const repliesOfAllTweetReducer = (state = initialState, action) => {
+let listInitialState = {};
+export const repliesOfAllTweetReducer = (state = listInitialState, action) => {
 
     switch(action.type) {
         case GET_REPLIES_OF_TWEET:

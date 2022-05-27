@@ -1,13 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 
-import { redirectUser } from '../../services/loginService';
+import { redirectToHomePage, redirectToLoginPage, redirectUser } from '../../services/loginService';
 
 const LoadingRedirect = (properties) => {
 
     const navigate = useNavigate();
     React.useEffect(()=> {
-        redirectUser(navigate);
+        redirectToHomePage(navigate);
+        redirectToLoginPage(navigate);
     },[]);
 
     return (

@@ -15,67 +15,44 @@ function selector(state) {
 
 const TweetList = (properties) => {
 
-    // const [tweetList , setTweetList] = React.useState();
+    const [tweetList , setTweetList] = React.useState();
 
     const { username } = properties;
 
-    // const dispatch = useDispatch();
-    // const tweetListState = useSelector(selector);
+    const dispatch = useDispatch();
+    const tweetListState = useSelector(selector);
 
     React.useEffect(() => {
-        if (username) {
+        // if (username) {
             // dispatch(getAllTweetsOfUser(username,''));
-        }
-        else {
-            // dispatch(getAllTweets());
-        }
+        // }
+        // else {
+            dispatch(getAllTweets());
+        // }
     }, []);
 
-    // React.useEffect(() => {
-    //     setTweetList(tweetListState);
-    // }, [tweetListState]);
+    React.useEffect(() => {
+        setTweetList(tweetListState);
+    }, [tweetListState]);
 
-    // if (tweetList === undefined || tweetList === null || tweetList.length < 1) {
-        let tweetList = [{
-            handle:'vineet',
-            message: 'How are you',
-            likes: 23,
-            dislikes: 43,
-            numberOfReplies:43,
-            tweetedTo:null,
-            hashTags: ['asking', 'health', 'care'],
-            avatarLink: tweetLogo,
-        },
-        {
-            handle:'lakshit',
-            message: 'I am Fine and  you',
-            likes: 23,
-            dislikes: 43,
-            numberOfReplies:43,
-            tweetedTo:null,
-            hashTags: ['answering and asking', 'health', 'care'],
-            avatarLink: tweetLogo,
-        },
-        {
-            handle:'some person',
-            message: 'Go somewhere else',
-            likes: 23,
-            dislikes: 43,
-            numberOfReplies:43,
-            tweetedTo:null,
-            hashTags: ['problem?', 'yes', 'i dont care'],
-            avatarLink: tweetLogo,
-        }];
-        // setTweetList(list);
-    // }
+    
+    if (tweetList === undefined || tweetList === null || tweetList.length <1) {
+        return <h1>Loading...</h1>
+    }
+
+    console.log(tweetList);
 
     return (
         <div>
             <ul className="tweet-list">
                 {tweetList.map((tweet, index) => {
-                   return ( <li>
-                        <Tweet tweet={tweet}></Tweet>
-                    </li>);
+                    if (tweet.repliedTo === null) {
+                        return ( 
+                            <li key={index}>
+                                <Tweet tweet={tweet}></Tweet>
+                            </li>);
+                    }
+                  
                 })}
             </ul>
         </div>

@@ -6,19 +6,29 @@ import TweetList from '../../components/TweetList';
 
 import { useNavigate } from 'react-router';
 
-import { redirectUser } from '../../services/loginService';
+import { redirectToLoginPage } from '../../services/loginService';
+
+import ProfilePicUpload from '../../components/ProfilePicUpload';
+
+import avatar from '../../images/avatar.jpg';
 
 const AllTweetsPage = (properties) => {
 
     const navigate =  useNavigate();
     React.useEffect(()=> {
-        redirectUser(navigate);
+		console.log("hello");
+        redirectToLoginPage(navigate);
     },[]);
 	
 	return (
-		<div className='col clgp-16'>
-			<AddTweet />
-			<TweetList />
+		<div className="row rowgp-24 justify-center" style={{minWidth: '70%'}}>
+			<div className="col clgp-16">
+				<ProfilePicUpload avatarLink={avatar}/>
+			</div>
+			<div className='col clgp-16' style={{minWidth: '60%'}}>
+				<AddTweet />
+				<TweetList />
+			</div>
 		</div>
 	);
 };
