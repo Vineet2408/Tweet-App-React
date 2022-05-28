@@ -16,6 +16,8 @@ import { useSelector } from 'react-redux';
 import { redirectUser } from './services/loginService';
 
 import { useNavigate } from 'react-router';
+import ForgotPassword from './pages/ForgotPassword';
+import SearchUserResultPage from './pages/SearchUserResultPage';
 
 
 function selector(state) {
@@ -42,6 +44,7 @@ function App() {
         <Route path="/" element={<LoadingRedirect />} />
         <Route path="/auth/login" element={<LoginPage />}/>
         <Route path="/auth/register" element={<RegistrationPage />}/>
+        <Route path="/auth/forgot" element={<ForgotPassword />} />
 
         {isUserLoggedIn && 
           <React.Fragment>
@@ -49,6 +52,7 @@ function App() {
 
             <Route path="/tweets" element={<AllTweetPage />}/>
             <Route path="/users" element={<AllUserPage />}/>
+            <Route path="/search" element={<SearchUserResultPage />} />
           </React.Fragment>
         }
         {

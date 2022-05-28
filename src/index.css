@@ -88,6 +88,12 @@ ul,li {
   color: white;
 }
 
+.post-button:disabled {
+  background-color: #c6b2dd;
+  box-shadow: none;
+
+}
+
 .post-button:active {
   background-color: #430788;
   border: 2px solid #81a1db;
@@ -279,6 +285,10 @@ ul,li {
 }
 .clgp-16 {
   row-gap: 16px;
+}
+
+.clgp-24 {
+  row-gap: 24px;
 }
 
 .rowgp-8 {

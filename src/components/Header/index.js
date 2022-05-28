@@ -10,6 +10,8 @@ import MenuModal from './MenuModal';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../LoginForm/action';
+
+
 // className='header-navigation-button'
 export const LoggedInNav = (properties) => {
 	return (
@@ -40,11 +42,10 @@ export const LoggedOutNav = (properties) => {
 };
 const Header = (properties) => {
 
-	const dispatch = useDispatch();
 	const {
-		searchInputHandler,
 		profilePicSrc,
 	} = properties;
+	const dispatch = useDispatch();
 
 	const [showmodal, setShowModal] = React.useState(false);
 
@@ -74,7 +75,7 @@ const Header = (properties) => {
 					<Logo />
 				</div>
 				<div className='search-bar-section'>
-					<SearchBar searchInputHandler={searchInputHandler} />
+					<SearchBar />
 				</div>
 				<div className='profile-pic-section'>
 					<button

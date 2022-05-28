@@ -3,21 +3,17 @@ import React from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 
 import { emailRegex } from '../../constants/regex';
-import DoubleButtonToggle from '../UI/DoubleButtonToggle';
 
 import { loginUser } from './action';
 
-import { LOGIN_USER_API } from '../../constants/api';
-
-import axios from 'axios';
-
 import './loginForm.css';
 
+import { useNavigate } from 'react-router';
 
 
 const LoginForm = (properties) => {
 
-    const [loginWith, setLoginWith] = React.useState(true);
+    const navigate = useNavigate();
 
     const [username, setUsername] = React.useState('');
 
@@ -30,12 +26,6 @@ const LoginForm = (properties) => {
     const [password, setPassword] = React.useState('');
 
     const  dispatch = useDispatch();
-
-
-    const toggleLoginWith = (event) => {
-        event.preventDefault();
-        setLoginWith(!loginWith);
-    }
 
     const validate = (regexp, value) => {
         if (regexp.test(value)) {
@@ -68,12 +58,14 @@ const LoginForm = (properties) => {
     const emailBlurHandler = (event) => {
         setEmail(event.target.value);
     }
-    const usernameChangeHandler = (event) => {
-        setUsername(event.target.value);
-    }
 
     const passwordChangeHandler = (event) => {
         setPassword(event.target.value);
+    }
+
+    const forgotClickHandler = (event) => {
+        event.preventDefault();
+        navigate('/auth/forgot');
     }
     
 
@@ -82,16 +74,7 @@ const LoginForm = (properties) => {
         console.log(event.target.elements[1].value);
         setEmail(event.target.elements[0].value);
         setPassword(event.target.elements[1].value);
-        if (loginWith) {
-            if (username.trim().length > 4  && password.trim().length > 5) {
-                const loginData = {username,password};
-                dispatch(loginUser(loginData));
-            }
-            else {
-                setShowError(true);
-            }
-        }
-        else {
+        
             if (email.trim().length > 5  && password.trim().length > 5) {
                 const loginData = {id:email,password};
                 // dispatch(loginUser(loginData));
@@ -102,37 +85,26 @@ const LoginForm = (properties) => {
             else {
                 setShowError(true);
             }
-        }
+        
     }
 
     return (
         <div className="justify-center">
         <div className="login-component">
-            <div className="toggle-button-container">
-                <DoubleButtonToggle 
-                    firstButtonName={'Login with Username'}
-                    secondButtonName={'Login with Email'}
-                    firstButtonClick={toggleLoginWith}
-                    secondButtonClick={toggleLoginWith}
-                    toggled={loginWith}
-                    setToggled={setLoginWith}
-                ></DoubleButtonToggle>
-                
-            </div>
             <div className="login-form-section">
                 <form onSubmit={submitHandler} className="login-form">
                     <div className="col clgp-8">
-                        <label htmlFor={loginWith?'username':'email'}>{loginWith?'Username' : 'Email'}</label>
+                        <label htmlFor={'email'}>{'Email'}</label>
                         <input
                         
-                            name={loginWith ? 'username' : 'email'}
+                            name={'email'}
                             required={true}
-                            type={loginWith ? 'text' : 'email'}
-                            placeholder={`Enter your `+ (loginWith ? 'Username' : 'Email')}
+                            type={'email'}
+                            placeholder={`Enter your Email`}
                             className="text-input wid-300 "
-                            value={loginWith?username:email}
-                            onChange = {loginWith? usernameChangeHandler:emailChangeHandler}
-                            onBlur={loginWith? usernameChangeHandler:emailBlurHandler}
+                            value={email}
+                            onChange = {emailChangeHandler}
+                            onBlur={emailBlurHandler}
                         />
                         {showError && <p style={{paddingLeft:"4px",color:"red",fontWeight:"500"}}>Input is Invalid</p>}
                     </div>
@@ -149,7 +121,8 @@ const LoginForm = (properties) => {
                             onChange={passwordChangeHandler}
                         />
                     </div>
-                    <div className="justify-center">
+                    <div className="space-between">
+                        <button className="delete-button" type="button" onClick={forgotClickHandler}>Forgot Password</button>
                         <button className="post-button" type="submit" disabled={false}>Login</button>
                     </div>
                 </form>

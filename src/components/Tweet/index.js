@@ -145,7 +145,6 @@ const Tweet = (properties) => {
                     </div> */}
                     <div className="d-flex">
                         <span  className="tweet-votes">
-                            <p className="tweet-votes">{tweet.numberOfReplies}</p>
                             <button className="toggle-add-post-button" onClick={replyClickHandler} type="button">
                                 <i className="fa fa-comments-o" aria-hidden="true"></i>
                             </button>

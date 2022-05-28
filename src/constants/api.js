@@ -7,6 +7,10 @@ export const LOGIN_USER_API = apiPrefix+'/api/v1.0/tweets/login';
 
 export const REGISTER_USER_API = apiPrefix+'/api/v1.0/tweets/register';
 
+export const SECURITY_API = apiPrefix+'/api/v1.0/tweets/validate/question';
+
+export const CHANGE_PASSWORD_API = apiPrefix+'/api/v1.0/tweets/changePassword';
+
 
 export let UPDATE_TWEET_API = apiPrefix+'/api/v1.0/tweets/username/update/id';
 
@@ -25,6 +29,6 @@ export const GET_ALL_TWEETS_OF_USER_API = apiPrefix+'/api/v1.0/tweets/';
 
 export const GET_ALL_USERS_API = apiPrefix+'/api/v1.0/tweets/users/all';
 
-export const GET_USER_BY_USERNAME_API = apiPrefix+'/api/v/1.0/tweets/user/search/';
+export const GET_USER_BY_SEARCH_API = apiPrefix+'/api/v1.0/tweets/user/search/username';
 
 export const PHOTO_UPLOAD_API = apiPrefix+'/';
