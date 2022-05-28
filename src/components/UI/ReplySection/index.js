@@ -37,7 +37,7 @@ const ReplySection = (properteis) => {
     return (
         <div>
             <AddTweet repliedTo={tweet.id}/>
-            <ul>
+            <ul className="col clgp-8">
                {UIArray}
             </ul>
         </div>

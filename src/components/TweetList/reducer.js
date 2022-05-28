@@ -41,7 +41,7 @@ export const tweetListReducer = (state = initialState, action) => {
             list.sort((tweet1, tweet2)=> tweet1.tweetedAt < tweet2.tweetedAt);
             console.log("after like = ",list);
 
-            return state;
+            return list;
         default: 
             return state;
     }

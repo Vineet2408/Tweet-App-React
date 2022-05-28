@@ -12,6 +12,12 @@ export const REPLY_TO_TWEET = 'REPLY_TO_TWEET';
 export const GET_REPLIES_OF_TWEET = 'GET_REPLIES_OF_TWEET';
 
 
+export const REPLY_LIKE = "REPLY_LIKE";
+
+export const REPLY_UPDATE = "REPLY_UPDATE";
+
+export const REPLY_DELETE = "REPLY_DELETE";
+
 
 export const updateTweetByUsername = (username,id,tweetData) => function (dispatch) {
     
@@ -26,8 +32,17 @@ export const updateTweetByUsername = (username,id,tweetData) => function (dispat
     };
 
     axios(axiosConfig)
-    .then((reponse) => {
-        dispatch({ payload:reponse.data,type: UPDATE_TWEET})
+    .then((response) => {
+        if (response.data.repliedTo !== null) {
+            let newData = {};
+            let newArr = [];
+            newArr.push(response.data);
+            newData[response.data.repliedTo] = newArr;
+            dispatch({ payload:newData,type: REPLY_UPDATE});
+        }
+        else {
+            dispatch({ payload:response.data,type: UPDATE_TWEET});
+        }
     })
     .catch((error) => console.log(error));
 }
@@ -45,10 +60,21 @@ export const deleteTweetByUsername = (username,id,tweet) => function (dispatch) 
     };
 
     axios(axiosConfig)
-    .then((reponse) => {
-        if (reponse.data ) {
+    .then((response) => {
+        if (response.data ) {
+            console.log(response.data);
+            if (tweet.repliedTo !== null) {
 
-            dispatch({ payload:tweet,type: DELETE_TWEET});
+                let newData = {};
+                let newArr = [];
+                newArr.push(tweet);
+                newData[tweet.repliedTo] = newArr;
+
+                dispatch({ payload:newData,type: REPLY_DELETE});
+            }
+            else {
+                dispatch({ payload:tweet,type: DELETE_TWEET});
+            }
         }
     })
     .catch((error) => console.log(error));
@@ -66,11 +92,23 @@ export const likeTweetByUsername = (username,id) => function (dispatch) {
     };
 
     axios(axiosConfig)
-    .then((reponse) => {
-        console.log(reponse.data);
-        dispatch({ 
-            payload:reponse.data,
-            type: LIKE_TWEET})
+    .then((response) => {
+        console.log(response.data);
+        if (response.data.repliedTo !== null) {
+            let newData = {};
+            let newArr = [];
+            newArr.push(response.data);
+            newData[response.data.repliedTo] = newArr;
+            dispatch({ 
+                payload:newData,
+                type: REPLY_LIKE});
+        }
+        else {
+            dispatch({ 
+                payload:response.data,
+                type: LIKE_TWEET});
+        }
+        
     })
     .catch((error) => console.log(error));
 }
@@ -88,8 +126,12 @@ export const replyTweetByUsername = (username,id,tweetData) => function (dispatc
     };
 
     axios(axiosConfig)
-    .then((reponse) => {
-        dispatch({ payload:reponse.data,type: REPLY_TO_TWEET})
+    .then((response) => {
+        let newData = {};
+        let newArrOfReplies = [];
+        newArrOfReplies.push(response.data);
+        newData[id] = newArrOfReplies;
+        dispatch({ payload:newData,type: REPLY_TO_TWEET})
     })
     .catch((error) => console.log(error));
 }
