@@ -1,9 +1,12 @@
 import axios from "axios";
-import { GET_USER_BY_USERNAME_API, GET_ALL_USERS_API } from "../../constants/api";
+import { GET_USER_BY_SEARCH_API, GET_ALL_USERS_API } from "../../constants/api";
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 
 export const GET_USER_BY_USERNAME = 'GET_USER_BY_USERNAME';
+
+export const GET_USER_BY_SEARCH = 'GET_USER_BY_SEARCH';
+
 
 
 export const getAllUsers = () => function (dispatch) {
@@ -22,16 +25,20 @@ export const getAllUsers = () => function (dispatch) {
     .catch((error) => console.log(error));
 }
 
-export const getUserByUsername = (username) => function (dispatch) {
+export const getUserBySearch = (username) => function (dispatch) {
+    let api = `${GET_USER_BY_SEARCH_API}`;
+    api = api.substring(0,api.indexOf('username'))+username;
+
+
     const axiosConfig = {
         method: 'get',
-        url: GET_USER_BY_USERNAME_API+username
+        url: api
     };
 
     axios(axiosConfig).then((response) => {
         dispatch({
             payload: response.data,
-            type: GET_USER_BY_USERNAME
+            type: GET_USER_BY_SEARCH
         });
     }).catch((error) => console.log(error));
 }

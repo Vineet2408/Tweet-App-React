@@ -2,68 +2,144 @@ import React from 'react';
 
 import './registerForm.css';
 
+import { useDispatch } from 'react-redux';
+
+import { registerUser } from './action';
+import { useNavigate } from 'react-router';
+
 const RegisterForm = (properties) => {
+
+    const dispatch = useDispatch();
 
     const [formValid, setFormValid] = React.useState(false);
 
     const [firstName, setFirstName] = React.useState();
+    const [lastName, setLastName] = React.useState();
+    const [email, setEmail] = React.useState();
+    const [username, setUsername] = React.useState();
+    const [dob, setDob] = React.useState();
+    const [gender, setGender] = React.useState();
+
+    const [password, setPassword] = React.useState();
+    const [confirmPassword, setConfirmPassword] = React.useState();
+
+    const [securityAnswer, setSecurityAnswer] = React.useState();
+
+    const securityChangeHandler = (event) => {
+        let value  = event.target.value;
+        setSecurityAnswer(value);
+    }
+
+    const navigate = useNavigate();
+
+
     const firstNameChangeHandler = (event) => {
         const value = event.target.value;
         setFirstName(value);
+        if (confirmPassword === password && password !== undefined && password !== null && password.trim() !== '') {
+            setFormValid(true);
+        }
+        else {
+            setFormValid(false);
+        }
     };
-    const [lastName, setLastName] = React.useState();
     const lastNameChangeHandler = (event) => {
         const value = event.target.value;
         setLastName(value);
+        if (confirmPassword === password && password !== undefined && password !== null && password.trim() !== '') {
+            setFormValid(true);
+        }
+        else {
+            setFormValid(false);
+        }
     };
-    const [email, setEmail] = React.useState();
     const emailChangeHandler = (event) => {
         const value = event.target.value;
         setEmail(value);
+        if (confirmPassword === password && password !== undefined && password !== null && password.trim() !== '') {
+            setFormValid(true);
+        }
+        else {
+            setFormValid(false);
+        }
     };
-    const [username, setUsername] = React.useState();
     const usernameChangeHandler = (event) => {
         const value = event.target.value;
         setUsername(value);
+        if (confirmPassword === password && password !== undefined && password !== null && password.trim() !== '') {
+            setFormValid(true);
+        }
+        else {
+            setFormValid(false);
+        }
     };
-    const [password, setPassword] = React.useState();
     const passwordChangeHandler = (event) => {
         const value = event.target.value;
         setPassword(value);
-    };
-
-    const [dob, setDob] = React.useState();
-    const dobChangeHandler = (event) => {
-        const value = event.target.value;
-        setDob(value);
-    };
-    const [confirmPassword, setConfirmPassword] = React.useState();
-    const confirmPasswordChangeHandler = (event) => {
-        const value = event.target.value;
-        setConfirmPassword(value);
-        if (confirmPassword === password) {
+        if (confirmPassword === value && value !== undefined && value !== null && value.trim() !== '') {
             setFormValid(true);
+        }
+        else {
+            setFormValid(false);
         }
     };
 
-    const [gender, setGender] = React.useState();
+    const dobChangeHandler = (event) => {
+        const value = event.target.value;
+        setDob(value);
+        if (confirmPassword === password && password !== undefined && password !== null && password.trim() !== '') {
+            setFormValid(true);
+        }
+        else {
+            setFormValid(false);
+        }
+    };
+    const confirmPasswordChangeHandler = (event) => {
+        const value = event.target.value;
+        setConfirmPassword(value);
+        if (value === password && password !== undefined && password !== null && password.trim() !== '') {
+            setFormValid(true);
+        }
+        else {
+            setFormValid(false);
+        }
+    };
+
 
     const genderChangeHandler = (event) => {
         const value =  event.target.value;
-        setGender(value)
+        setGender(value);
+        if (confirmPassword === password && password !== undefined && password !== null && password.trim() !== '') {
+            setFormValid(true);
+        }
+        else {
+            setFormValid(false);
+        }
+
     };
     const submitHandler = (event) => {
+        event.preventDefault();
         console.log(dob);
+        if(password !== confirmPassword) {
+            setFormValid(false);
+        }
         const registerData = {
             firstName,
             lastName,
-            dob,
+            dateOfBirth:dob,
             email,
             username,
             gender,
             password,
             confirmPassword,
+            avatarLink:'',
+            securityAnswer,
         }
+
+        dispatch(registerUser(registerData));
+
+        navigate("/auth/login");
+
     };
 
     return (
@@ -71,6 +147,7 @@ const RegisterForm = (properties) => {
             <form onSubmit={submitHandler} className="registration-form">
                 <div className="registration-form-container">
                     <div className="col clgp-16">
+                        <label htmlFor={"firstName"}>First Name</label>
                         <input
                             className="text-input"
                             label="First Name"
@@ -78,9 +155,10 @@ const RegisterForm = (properties) => {
                             required={true}
                             type="text"
                             placeholder="Enter your First Name"
-                            value={firstName}
+                            defaultValue={firstName}
                             onChange={firstNameChangeHandler}
                         />
+                        <label htmlFor={"email"}>Email</label>
                         <input
                             className="text-input"
                             label="Email"
@@ -88,71 +166,91 @@ const RegisterForm = (properties) => {
                             required={true}
                             type="email"
                             placeholder="Enter your Email"
-                            value={email}
+                            defaultValue={email}
                             onChange={emailChangeHandler}
                         />
+                        <label htmlFor={"username"}>Username</label>
                         <input
                             className="text-input"
                             label="Username"
                             name="username"
-                            required={true}
+                            required
                             type="text"
                             placeholder="Enter your username"
-                            value={username}
+                            defaultValue={username}
                             onChange={usernameChangeHandler}
                         />
+                        <label htmlFor={"password"}>Password</label>
                         <input
                             className="text-input"
                             label="Password"
                             name="password"
-                            required={true}
+                            required
                             type="password"
                             placeholder="Enter your Password"
-                            value={password}
+                            defaultValue={password}
                             onChange={passwordChangeHandler}
                         />
                     </div>
                     <div className="col clgp-16">
+                        <label htmlFor={"lastName"}>Last Name</label>
                         <input
                             className="text-input"
                             label="Last Name"
                             name="lastName"
-                            required={true}
+                            required
                             type="text"
                             placeholder="Enter your Last Name"
-                            value={lastName}
+                            defaultValue={lastName}
                             onChange={lastNameChangeHandler}
                         />
+                        <label htmlFor={"gender"}>Gender</label>
                         <select 
                             className="select-input"
                             label="Gender"
-                            required={true}
+                            required
                             name="gender"
                             onChange={genderChangeHandler}
                         >
                             <option selected={gender==='MALE'}>MALE</option>
                             <option selected={gender==='FEMALE'}>FEMALE</option>
                         </select>
+                        <label htmlFor={"dob"}>Date of Birth</label>
                         <input
                             className="text-input"
                             type="date"
-                            required={true}
+                            required
                             label="Date of Birth"
                             name="dob"
-                            value={dob}
+                            defaultValue={dob}
                             onChange={dobChangeHandler}
                         />
+                        <label htmlFor={"confirmPassword"}>Confirm Password</label>
                         <input
                             className="text-input"
                             label="Confirm Password"
                             name="confirmPassword"
-                            required={true}
-                            type="paswword"
+                            required
+                            type="password"
                             placeholder="Confirm your Password"
-                            value={confirmPassword}
+                            defaultValue={confirmPassword}
                             onChange={confirmPasswordChangeHandler}
+                            onBlur={confirmPasswordChangeHandler}
                         />
                     </div>
+                </div>
+                <div className="col clgp-8" style={{padding:"32px"}}>
+                    <label htmlFor="securityAnswer">Who is favorite Superhero(Security Question)</label>
+                    <input
+                        type="text"
+                        required
+                        name="securityAnswer"
+                        placeholder="Enter the ans for the above security question"
+                        defaultValue={securityAnswer}
+                        onChange={securityChangeHandler}
+                        onBlur={securityChangeHandler}
+                        className="text-input"
+                    />
                 </div>
                 <div className="justify-center">
                     <button className="post-button" type="submit" disabled={!formValid}>Register</button>
