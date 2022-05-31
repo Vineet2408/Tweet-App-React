@@ -1,8 +1,6 @@
-import { UPDATE_TWEET, DELETE_TWEET, LIKE_TWEET, REPLY_TO_TWEET, GET_REPLIES_OF_TWEET } from "./action";
+import { REPLY_TO_TWEET, GET_REPLIES_OF_TWEET } from "./action";
 
 import {REPLY_DELETE, REPLY_LIKE, REPLY_UPDATE} from './action';
-
-let initialState = {};
 
 let listInitialState = {};
 export const repliesOfAllTweetReducer = (state = listInitialState, action) => {

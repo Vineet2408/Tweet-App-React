@@ -12,9 +12,6 @@ import EditModal from './EditModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import ReplySection from '../UI/ReplySection';
 
-function tweetSelector(state) {
-    return state.tweetReducer
-}
 
 function repliesSelector(state) {
     return state.repliesOfAllTweetReducer;

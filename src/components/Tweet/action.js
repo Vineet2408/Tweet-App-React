@@ -21,14 +21,19 @@ export const REPLY_DELETE = "REPLY_DELETE";
 
 export const updateTweetByUsername = (username,id,tweetData) => function (dispatch) {
     
+    let access_token = localStorage.getItem("token");
     let api = `${UPDATE_TWEET_API}`;
     api = api.substring(0,api.indexOf('username'))+username+"/update/"+id;
     console.log(api);
     console.log('username = ',username, " id = ",id);
+
     const axiosConfig = {
         data: tweetData,
         method: 'put',
-        url: api
+        url: api,
+        headers:{
+            Authorization: `Bearer ${access_token}`,
+        }
     };
 
     axios(axiosConfig)
@@ -49,6 +54,7 @@ export const updateTweetByUsername = (username,id,tweetData) => function (dispat
 
 
 export const deleteTweetByUsername = (username,id,tweet) => function (dispatch) {
+    let access_token = localStorage.getItem("token");
 
     console.log('username = ',username, " id = ",id);
     let api = `${DELETE_TWEET_API}`;
@@ -56,7 +62,10 @@ export const deleteTweetByUsername = (username,id,tweet) => function (dispatch) 
     console.log('api = ',api);
     const axiosConfig = {
         method: 'delete',
-        url: api
+        url: api,
+        headers:{
+            Authorization: `Bearer ${access_token}`,
+        }
     };
 
     axios(axiosConfig)
@@ -81,6 +90,8 @@ export const deleteTweetByUsername = (username,id,tweet) => function (dispatch) 
 }
 
 export const likeTweetByUsername = (username,id) => function (dispatch) {
+    let access_token = localStorage.getItem("token");
+
     let api = `${LIKE_TWEET_API}`;
     api = api.substring(0,api.indexOf('username'))+username+"/like/"+id;
 
@@ -88,7 +99,10 @@ export const likeTweetByUsername = (username,id) => function (dispatch) {
 
     const axiosConfig = {
         method: 'put',
-        url: api
+        url: api,
+        headers:{
+            Authorization: `Bearer ${access_token}`,
+        }
     };
 
     axios(axiosConfig)
@@ -115,6 +129,8 @@ export const likeTweetByUsername = (username,id) => function (dispatch) {
 
 
 export const replyTweetByUsername = (username,id,tweetData) => function (dispatch) {
+    let access_token = localStorage.getItem("token");
+
     let api = `${REPLY_TO_TWEET_API}`;
     api = api.substring(0,api.indexOf('username'))+username+"/reply/"+id;
     console.log('username = ',username, " id = ",id);
@@ -122,7 +138,10 @@ export const replyTweetByUsername = (username,id,tweetData) => function (dispatc
     const axiosConfig = {
         data: tweetData,
         method: 'post',
-        url: api
+        url: api,
+        headers:{
+            Authorization: `Bearer ${access_token}`,
+        }
     };
 
     axios(axiosConfig)
@@ -137,6 +156,7 @@ export const replyTweetByUsername = (username,id,tweetData) => function (dispatc
 }
 
 export const getAllRepliesOfTweet = (username, id) => function(dispatch) {
+    let access_token = localStorage.getItem("token");
 
     let api = `${GET_REPLIES_OF_TWEET_API}`;
     api = api.substring(0,api.indexOf('id'))+id;
@@ -144,7 +164,10 @@ export const getAllRepliesOfTweet = (username, id) => function(dispatch) {
 
     const axiosConfig = {
         method: 'get',
-        url: api
+        url: api,
+        headers:{
+            Authorization: `Bearer ${access_token}`,
+        }
     };
 
     axios(axiosConfig)

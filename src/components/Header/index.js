@@ -8,7 +8,7 @@ import { NavLink, Route, Routes } from 'react-router-dom';
 
 import MenuModal from './MenuModal';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logoutUser } from '../LoginForm/action';
 
 
@@ -60,14 +60,7 @@ const Header = (properties) => {
 	}
 
 	const isUserLoggedIn = localStorage.getItem('isUserLoggedIn');
-
-	const logoutButtonStyle = {
-		background:'none',
-		border: 'none',
-		padding:'8px 16px'
-
-	};
-
+	
 	return (
 		<div className='header'>
 			<div className='top-row-header'>
