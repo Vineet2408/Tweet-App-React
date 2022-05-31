@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 const EditModal = (properties) => {
 
-    const { tweet } = properties;
+    const { tweet,closeEditModal } = properties;
     let { message, listOfTags }= tweet;
 
     if (message === undefined || message === null) {
@@ -41,6 +41,7 @@ const EditModal = (properties) => {
             listOfTags: hashTags.split(','),  
         };
         dispatch(updateTweetByUsername(tweet.username, tweet.id, tweetData));
+        closeEditModal(event);
     }
 
   
