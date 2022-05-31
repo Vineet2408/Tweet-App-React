@@ -3,7 +3,7 @@ import React from 'react';
 import './searchBar.css';
 
 import { getUserBySearch } from '../UserList/action';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 

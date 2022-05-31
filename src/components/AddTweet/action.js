@@ -5,6 +5,7 @@ import { ADD_TWEET_API } from "../../constants/api";
 export const ADD_TWEET = 'ADD_TWEET';
 
 export const addTweet = (tweetData) => function (dispatch) {
+    let access_token = localStorage.getItem("token");
 
     let username = localStorage.getItem('username');
     let api = `${ADD_TWEET_API}`;
@@ -14,7 +15,10 @@ export const addTweet = (tweetData) => function (dispatch) {
     const axiosConfig = {
         data:tweetData,
         method: 'post',
-        url: api
+        url: api,
+        headers: {
+            Authorization: `Bearer ${access_token}`,
+        }
 
     }
 

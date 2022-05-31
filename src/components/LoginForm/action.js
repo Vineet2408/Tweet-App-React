@@ -7,7 +7,7 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
 
-export const loginUser = (userCreds) => function (dispatch) {
+export const loginUser = (userCreds, setLoginFailed) => function (dispatch) {
 
     const axiosConfig = {
         data:userCreds,
@@ -19,21 +19,28 @@ export const loginUser = (userCreds) => function (dispatch) {
     .then((response) => {
         console.log(response.data);
         if(response.data.username !== undefined && response.data.username !== null) {
-            dispatch({
-                payload:{
-                    token:'sometoken',
-                    userId:response.data.id,
-                    isUserLoggedIn:true,
-                    username:response.data.username
-                },
-                type: LOGIN_USER
-            });
+            let access_token = response.data.access_token;
+            if (access_token !== undefined && access_token !== null) {
+                dispatch({
+                    payload:{
+                        token:response.data.access_token,
+                        userId:response.data.email,
+                        isUserLoggedIn:true,
+                        username:response.data.username
+                    },
+                    type: LOGIN_USER
+                });
+            }
+            else {
+                setLoginFailed(true);
+            }
         }
         else {
+            setLoginFailed(true);
             console.log('login failed');
         }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {setLoginFailed(true);console.log(error)});
 }
 
 export const logoutUser = () => function(dispatch) {

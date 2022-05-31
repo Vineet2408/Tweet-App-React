@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AddTweet from './components/AddTweet';
 import Header from './components/Header';
 
 import AllTweetPage from './pages/AllTweetsPage/index.js';
@@ -13,7 +12,6 @@ import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 
 import { useSelector } from 'react-redux';
-import { redirectUser } from './services/loginService';
 
 import { useNavigate } from 'react-router';
 import ForgotPassword from './pages/ForgotPassword';
@@ -29,9 +27,6 @@ function App() {
   let state = useSelector(selector);
 
   let isUserLoggedIn = state.isUserLoggedIn || localStorage.getItem('isUserLoggedIn') || false;
-
-  const navigate = useNavigate();
-
 
   return (
     <div className="App">

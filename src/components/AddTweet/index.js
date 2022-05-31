@@ -2,13 +2,9 @@ import React from 'react';
 
 import './addTweet.css';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTweet } from './action';
 import { replyTweetByUsername } from '../Tweet/action';
-
-function selector(state) {
-    return state.addTweetReducer;
-}
 
 const AddTweet = (properties) => {
 

@@ -3,11 +3,10 @@ import Tweet from '../Tweet';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getAllTweets, getAllTweetsOfUser } from './action';
+import { getAllTweets } from './action';
 
 import './tweetList.css';
 
-import tweetLogo from '../../images/tweetLogo.jpg';
 
 function selector(state) {
   return state.tweetListReducer;
@@ -16,8 +15,6 @@ function selector(state) {
 const TweetList = (properties) => {
 
     const [tweetList , setTweetList] = React.useState();
-
-    const { username } = properties;
 
     const dispatch = useDispatch();
     const tweetListState = useSelector(selector);
