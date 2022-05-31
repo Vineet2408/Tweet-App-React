@@ -8,13 +8,14 @@ const ConfirmDeleteModal = (properties) => {
 
     const dispatch = useDispatch();
 
-    const { tweet } = properties;
+    const { tweet, cancelHandler } = properties;
     const  username  = localStorage.getItem('username');
 
     const deleteConfirmTweetHandler = (event) => {
         event.preventDefault();
         console.log(username, tweet.id);
         dispatch(deleteTweetByUsername(tweet.username,tweet.id,tweet));
+        cancelHandler(event);
     };
 
     return (

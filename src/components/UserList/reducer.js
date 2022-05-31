@@ -9,7 +9,6 @@ export const userListReducer = (state = initialState, action) => {
 
         case GET_ALL_USERS:
             newState= [
-                ...state,
                 ...action.payload
             ];
             
