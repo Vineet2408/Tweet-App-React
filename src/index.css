@@ -25,6 +25,13 @@ ul,li {
   list-style-type: none;
 }
 
+a {
+  background: transparent;
+  cursor: pointer;
+  color: #0059ff;
+  text-decoration: none;
+}
+
 .d-flex {
   display: flex;
 }
@@ -64,6 +71,27 @@ ul,li {
   height: 256px;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.link {
+  background: transparent;
+  cursor: pointer;
+  color: #0059ff;
+}
+
+.link:focus {
+  border-radius: 3px;
+  border-color: #000000;
+  text-decoration: underline;
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px, rgb(0, 0, 0) 0px 0px 0px 4px;
+} 
+
+.link:active, .link:hover {
+  text-decoration: underline;
+}
+
 .visually-hidden-object {
   border: 0px;
   clip: rect(1px1px 1px 1px);
@@ -82,26 +110,28 @@ ul,li {
   display: flex;
   padding: 8px 16px;
   border-radius: 12px;
-  background-color: #6f3bac;
-  border: 2px solid #0059ff;
+  background-color: black;
+  border: 2px solid transparent;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   color: white;
+  cursor: pointer;
 }
 
 .post-button:disabled {
-  background-color: #c6b2dd;
+  background-color: gray;
   box-shadow: none;
 
 }
 
 .post-button:active {
-  background-color: #430788;
-  border: 2px solid #81a1db;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.post-button:focus-visible {
-  border: 2px solid #011335;
+.post-button:focus-visible, .post-button:hover {
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px, rgb(8, 117, 225) 0px 0px 0px 4px;
 }
 
 .get-button {
@@ -264,20 +294,24 @@ ul,li {
 }
 
 .text-input {
-  border-radius: 12px;
-  padding: 16px 24px;
+  border-radius: 8px;
+  padding: 10px 24px;
   border: 2px solid #0059ff;
   font-size: 16px;
   min-width: 260px;
+  height: 19px;
+}
+
+.text-input:focus-visible {
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px, rgb(8, 117, 225) 0px 0px 0px 4px;
 }
 
 .select-input {
-  border-radius: 12px;
-  padding: 16px 24px;
+  border-radius: 8px;
+  padding: 10px 24px;
   border: 2px solid #0059ff;
   font-size: 16px;
   min-width: 300px;
-
 }
 
 .clgp-8 {
@@ -304,4 +338,16 @@ ul,li {
 
 .min-wid-80 {
   min-width: 80%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.break-word{
+  word-wrap: break-word;
 }

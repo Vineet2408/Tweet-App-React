@@ -80,13 +80,8 @@ const LoginForm = (properties) => {
 	};
 
 	return (
-		<div className='justify-center'>
+		<div className='justify-center' style={{marginTop: '80px'}}>
 			<div className='login-component'>
-				{loginFailed && (
-					<div className='justify-center api-error '>
-						<p>Invaild Credentials</p>
-					</div>
-				)}
 				<div className='login-form-section'>
 					<form onSubmit={submitHandler} className='login-form'>
 						<div className='col clgp-8'>
@@ -126,20 +121,30 @@ const LoginForm = (properties) => {
 								onChange={passwordChangeHandler}
 							/>
 						</div>
-						<div className='space-between'>
+
+						{loginFailed && (
+							<div className='col justify-center api-error break-word'>
+								<p>Credentials do not match our records.</p>
+								<p>Please try again.</p>
+							</div>
+						)}
+						<div style={{marginTop: '6px'}}>
 							<button
-								className='delete-button'
-								type='button'
-								onClick={forgotClickHandler}
-							>
-								Forgot Password
-							</button>
-							<button
-								className='post-button'
+								className='post-button cursor-pointer w-100'
 								type='submit'
 								disabled={false}
 							>
-								Login
+								<span style={{margin: '0 auto'}}>Login</span>
+							</button>
+						</div>
+
+						<div>	
+							<button
+								className='link w-100'
+								type='button'
+								onClick={forgotClickHandler}
+							>
+								<span style={{margin: '0 auto'}}>Forgot Password?</span>
 							</button>
 						</div>
 					</form>

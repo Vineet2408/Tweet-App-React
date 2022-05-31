@@ -10,7 +10,7 @@ import { redirectToLoginPage } from '../../services/loginService';
 
 import ProfilePicUpload from '../../components/ProfilePicUpload';
 
-import avatar from '../../images/avatar.jpg';
+import avatar from '../../images/default-user.png';
 
 const AllTweetsPage = (properties) => {
 

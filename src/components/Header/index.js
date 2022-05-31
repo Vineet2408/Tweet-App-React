@@ -16,12 +16,20 @@ import { logoutUser } from '../LoginForm/action';
 export const LoggedInNav = (properties) => {
 	return (
 		<ul className='header-list-navigation'>
+			{/* <li className='header-list-item-navigation'>
+				<NavLink to="/home">Home</NavLink>
+			</li> */}
 			<li className='header-list-item-navigation'>
 				<NavLink to="/tweets">Tweets</NavLink>
 			</li>
 			<li className='header-list-item-navigation'>
-				<NavLink to="/users">All Users</NavLink>
-				
+				<NavLink to="/users">Users</NavLink>
+			</li>
+			<li className='header-list-item-navigation'>
+				<NavLink to="/search">Search</NavLink>
+			</li>
+			<li className='header-list-item-navigation' onClick={properties.logoutUserHandler}>
+				<a>Logout</a>
 			</li>
 		</ul>
 	);
@@ -35,7 +43,6 @@ export const LoggedOutNav = (properties) => {
 			</li>
 			<li className='header-list-item-navigation'>
 				<NavLink to="/auth/register">Register</NavLink>
-				
 			</li>
 		</ul>
 	);
@@ -63,31 +70,15 @@ const Header = (properties) => {
 	
 	return (
 		<div className='header'>
-			<div className='top-row-header'>
-				<div className='logo-section'>
+			<div className='top-row-header space-between'>
+				<a href="/home" className='logo-section'>
 					<Logo />
-				</div>
-				<div className='search-bar-section'>
-					<SearchBar />
-				</div>
-				<div className='profile-pic-section'>
-					<button
-						type='button'
-						className='profile-button-wrapper'
-						onClick={showMenuModel}
-					>
-						<ProfilePic profilePicSrc={profilePicSrc} size={32} />
-					</button>
-					
-					{showmodal && <MenuModal method={logoutUserHandler}/> }
-				</div>
-			</div>
-			<div className='bottom-row-header'>
+				</a>
 				<nav className='d-flex'>
 					<Routes>
 						<Route path='/auth/*' element={<LoggedOutNav />} />
 						{ isUserLoggedIn && (
-							<Route path='/*' element={<LoggedInNav />} />
+							<Route path='/*' element={<LoggedInNav logoutUserHandler={logoutUserHandler}/>} />
 
 						)}
 						{
@@ -97,6 +88,20 @@ const Header = (properties) => {
 						}
 					</Routes>
 				</nav>
+				{/* <div className='search-bar-section'>
+					<SearchBar />
+				</div> */}
+				{/* <div className='profile-pic-section'>
+					<button
+						type='button'
+						className='profile-button-wrapper'
+						onClick={showMenuModel}
+					>
+						<ProfilePic profilePicSrc={profilePicSrc} size={32} />
+					</button>
+					
+					{showmodal && <MenuModal method={logoutUserHandler}/> }
+				</div> */}
 			</div>
 		</div>
 	);

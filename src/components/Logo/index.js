@@ -2,7 +2,7 @@ import React from 'react';
 
 import './logo.css';
 
-import LogoImage from '../../images/tweetLogo.jpg'
+import LogoImage from '../../images/tweet-app-icon.png'
 
 const Logo = (properties) => {
 	return (
@@ -10,7 +10,7 @@ const Logo = (properties) => {
 			<div className='logo-wrapper'>
 				<img className='logo' src={LogoImage} alt="Logo"></img>
 			</div>
-			<p className="text-underline d-flex">Tweet-App</p>
+			<p className="">Tweet-App</p>
 		</div>
 	);
 };

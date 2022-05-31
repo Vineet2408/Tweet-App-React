@@ -84,9 +84,9 @@ const ForgotPassword = (properties) => {
     }
 
     return (
-        <div className="row justify-center" style={{width: "100%"}}>
+        <div className="row justify-center" style={{width: "100%", marginTop: '80px'}}>
         {!showChangePasswordForm && 
-            <form onSubmit={submitHandler} className="col clgp-16 card" style={{padding:"24px", maxWidth:"600px"}}>
+            <form onSubmit={submitHandler} className="col clgp-16" style={{padding:"24px", width:"440px"}}>
                 <div className="col clgp-8" style={{width:"100%"}}>
                     <label htmlFor={"email"}>Email</label>
                     <input
@@ -101,7 +101,7 @@ const ForgotPassword = (properties) => {
                     />
                 </div>
                 <div className="col clgp-8">
-                    <label htmlFor={"answer"}>Who is favorite Superhero(Security Question)</label>
+                    <label htmlFor={"answer"}>What was your childhood nickname?</label>
                     <input
                         className="text-input"
                         name="answer"
@@ -113,8 +113,10 @@ const ForgotPassword = (properties) => {
                         onBlur={answerChangeHandler}
                     />
                 </div>
-                <div className="justify-center">
-                    <button className="post-button" type="submit">Submit</button>
+                <div className="justify-center" style={{marginTop: '6px'}}>
+                    <button className="post-button cursor-pointer w-100" type="submit">
+                        <span style={{margin: '0 auto'}}>Submit</span>
+                    </button>
                 </div>
             </form>
         }
@@ -122,15 +124,15 @@ const ForgotPassword = (properties) => {
         {
             showChangePasswordForm &&
             <div className="col clgp-16">
-                <form onSubmit={passwordSubmitHandler} className="col clgp-16 card"  style={{padding:"24px", maxWidth:"600px"}}>
+                <form onSubmit={passwordSubmitHandler} className="col clgp-16"  style={{padding:"24px", width:"440px"}}>
                 <div className="col clgp-8">
                     <label htmlFor={"newPassword"}>New Password</label>
                     <input
                         className="text-input"
                         name="newPassword"
                         required
-                        type="text"
-                        placeholder="Enter your New Password"
+                        type="password"
+                        placeholder="Enter your new password"
                         defaultValue={newPassword}
                         onChange={newPasswordChangeHandler}
                         onBlur={newPasswordChangeHandler}
@@ -142,15 +144,17 @@ const ForgotPassword = (properties) => {
                         className="text-input"
                         name="confirmPassword"
                         required
-                        type="text"
-                        placeholder="Enter your confirmPassword"
+                        type="password"
+                        placeholder="Please re-enter your new password"
                         defaultValue={confirmPassword}
                         onChange={confirmPasswordChangeHandler}
                         onBlur={confirmPasswordChangeHandler}
                     />
                 </div>
-                <div className="justify-center">
-                    <button className="post-button" type="submit">Change</button>
+                <div className="justify-center" style={{marginTop: '6px'}}>
+                    <button className="post-button cursor-pointer w-100" type="submit">
+                        <span style={{margin: '0 auto'}}>Change Password</span>
+                    </button>
                 </div>
                 </form>
             </div>

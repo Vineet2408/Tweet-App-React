@@ -18,7 +18,7 @@ const RegisterForm = (properties) => {
     const [email, setEmail] = React.useState();
     const [username, setUsername] = React.useState();
     const [dob, setDob] = React.useState();
-    const [gender, setGender] = React.useState();
+    const [gender, setGender] = React.useState('MALE');
 
     const [password, setPassword] = React.useState();
     const [confirmPassword, setConfirmPassword] = React.useState();
@@ -131,7 +131,6 @@ const RegisterForm = (properties) => {
             username,
             gender,
             password,
-            confirmPassword,
             avatarLink:'',
             securityAnswer,
         }
@@ -145,8 +144,8 @@ const RegisterForm = (properties) => {
     return (
         <div className="registration-form-wrapper">
             <form onSubmit={submitHandler} className="registration-form">
-                <div className="registration-form-container">
-                    <div className="col clgp-16">
+                <div className="registration-form-container w-100">
+                    <div className="col clgp-16" style={{width: "inherit"}}>
                         <label htmlFor={"firstName"}>First Name</label>
                         <input
                             className="text-input"
@@ -192,7 +191,7 @@ const RegisterForm = (properties) => {
                             onChange={passwordChangeHandler}
                         />
                     </div>
-                    <div className="col clgp-16">
+                    <div className="col clgp-16" style={{width: "inherit"}}>
                         <label htmlFor={"lastName"}>Last Name</label>
                         <input
                             className="text-input"
@@ -239,8 +238,8 @@ const RegisterForm = (properties) => {
                         />
                     </div>
                 </div>
-                <div className="col clgp-8" style={{padding:"32px"}}>
-                    <label htmlFor="securityAnswer">Who is favorite Superhero(Security Question)</label>
+                <div className="col clgp-8">
+                    <label htmlFor="securityAnswer">What was your childhood nickname? (Security Question)</label>
                     <input
                         type="text"
                         required
@@ -253,7 +252,7 @@ const RegisterForm = (properties) => {
                     />
                 </div>
                 <div className="justify-center">
-                    <button className="post-button" type="submit" disabled={!formValid}>Register</button>
+                    <button className="post-button cursor-pointer" type="submit" disabled={!formValid}>Register</button>
                 </div>
             </form>
         </div>

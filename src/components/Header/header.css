@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 4px;
-    background-color: #aa67f7;
+    background-color: black;
 }
 
 .top-row-header {
@@ -38,12 +38,11 @@
     flex-direction: row;
     align-items: center;
     column-gap: 16px;
-    padding: 8px 16px 4px 16px;
+    padding: 12px 16px;
 }
 
 .logo-section {
-    display: flex;
-    flex: 1;
+    text-decoration: none;
 }
 
 .search-bar-section {
@@ -68,7 +67,7 @@
 .bottom-row-header {
     display: flex;
     padding: 8px 16px 8px 16px;
-    justify-content: left;
+    justify-content: right;
 
 }
 
@@ -78,11 +77,20 @@
     column-gap: 24px;
 }
 
-.header-list-item-navigation {
+.header-list-item-navigation a{
     display: flex;
     flex-direction: column;
-
+    color: white;
 }
+
+.header-list-item-navigation a:hover{
+    color: gray;
+}
+
+.header-list-item-navigation a[aria-current= "page"] {
+    color: gray;
+}
+
 .header-navigation-button {
     display: flex;
     padding: 4px 12px;

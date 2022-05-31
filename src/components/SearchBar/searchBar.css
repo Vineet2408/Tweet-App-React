@@ -28,6 +28,8 @@
     max-width: 320px;
     justify-content: center;
     align-items: center;
+    border: 2px solid black;
+    border-radius: 12px;
 }
 
 .search-input {

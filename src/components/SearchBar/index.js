@@ -27,7 +27,7 @@ const SearchBar = (properties) => {
 
 	}
 	return (
-		<div className="d-flex">
+		<div className="d-flex justify-center">
 			<form onSubmit={searchInputHandler} className="search-bar">
 				<input
 					className="search-input"

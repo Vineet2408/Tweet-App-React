@@ -1,7 +1,7 @@
 import React from 'react';
 import { profilePicSize } from '../../../constants/sizes';
 
-import avatar from '../../../images/avatar.jpg'
+import avatar from '../../../images/default-user.png'
 
 import './profilePic.css';
 
@@ -13,7 +13,7 @@ const ProfilePic = (properties) => {
 
     return (
         <div className={`profile-pic-wrapper ${className}`} >
-            <img alt="Profile Pic" className="profile-pic" src={avatar}></img>
+            <img alt="Profile Pic" className="profile-pic" src={profilePicSrc || avatar}></img>
         </div>
     );
 };

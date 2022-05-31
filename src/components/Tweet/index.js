@@ -88,6 +88,8 @@ const Tweet = (properties) => {
 
     let liked = tweet.listOfLikes[userId];
 
+    console.log(tweet.avatarLink);
+
     return (
         <React.Fragment>
             {editable && <EditModal tweet={tweet} closeEditModal={closeEditModal} />}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useSelector } from 'react-redux';
+import SearchBar from '../../components/SearchBar';
 
 import User from '../../components/User';
 
@@ -14,20 +15,28 @@ const SearchUserResultPage = (properties) => {
 
     console.log("state = ", state);
     if (state === undefined && state === null ) {
-        return <h4>Loading...</h4>
+        return <SearchBar />
     }
 
     return (
-        <div className="card">
-        <ul className="col clgp-24">
-            {
-                state.map((user,index) => {
-                   return (<li key={index}>
-                        <User user={user}/>
-                    </li>)
+        <div style={{paddingTop: "24px"}}>
+            <SearchBar />
+            <div className="d-flex justify-center" style={{marginTop: "24px"}}>
+            <div className="userList-wrapper">
+            <ul className="userList">
+                {state.map((user, index)=> {
+
+                    return (
+                                <li className="d-flex" key={index}>
+                                    <User user={user}/>
+                                </li>
+                            
+                            );
                 })
-            }
-        </ul>
+                }
+            </ul>
+        </div>
+            </div>
         </div>
     );
 };
