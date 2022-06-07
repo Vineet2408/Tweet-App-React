@@ -30,7 +30,7 @@ const SearchBar = (properties) => {
 		<div className="d-flex">
 			<form onSubmit={searchInputHandler} className="search-bar">
 				<input
-					className="search-input"
+					className="search-input min-400"
 					placeholder='Search'
 					name='search'
 					type='text'

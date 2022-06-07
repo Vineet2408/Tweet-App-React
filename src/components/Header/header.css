@@ -29,10 +29,28 @@
 .header {
     display: flex;
     flex-direction: column;
-    row-gap: 4px;
-    background-color: #aa67f7;
+    row-gap: 8px;
+    background-color: #0875e1;
+    padding-left: 12px;
+    padding-right: 24px;
+    padding-top: 8px;
 }
 
+.header-navlink {
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.header-navlink-active {
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 3px;
+}
 .top-row-header {
     display: flex;
     flex-direction: row;

@@ -8,7 +8,6 @@
 .logo-with-text-wrapper {
     display: flex;
     flex-direction: row;
-    align-items: center;
     column-gap: 12px;
     min-width: 160px;
     color: white;
@@ -19,4 +18,8 @@
     width: 100%;
     min-width: 32px;
     border-radius: 50%;
+}
+
+.logo-text {
+    font-size: 22px;
 }
