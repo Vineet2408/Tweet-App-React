@@ -17,10 +17,10 @@ export const LoggedInNav = (properties) => {
 	return (
 		<ul className='header-list-navigation'>
 			<li className='header-list-item-navigation'>
-				<NavLink to="/tweets">Tweets</NavLink>
+				<NavLink className={(navData) => navData.isActive ? 'header-navlink-active' : 'header-navlink'} to="/tweets">Tweets</NavLink>
 			</li>
 			<li className='header-list-item-navigation'>
-				<NavLink to="/users">All Users</NavLink>
+				<NavLink className={(navData) => navData.isActive ? 'header-navlink-active': 'header-navlink'} to="/users">All Users</NavLink>
 				
 			</li>
 		</ul>
@@ -31,10 +31,10 @@ export const LoggedOutNav = (properties) => {
 	return (
 		<ul className='header-list-navigation'>
 			<li className='header-list-item-navigation'>
-				<NavLink to="/auth/login">Login</NavLink>
+				<NavLink className={(navData)=> navData.isActive ? 'header-navlink-active' : 'header-navlink'} to="/auth/login">Login</NavLink>
 			</li>
 			<li className='header-list-item-navigation'>
-				<NavLink to="/auth/register">Register</NavLink>
+				<NavLink className={(navData)=> navData.isActive? 'header-navlink-active' : 'header-navlink'} to="/auth/register">Register</NavLink>
 				
 			</li>
 		</ul>
@@ -68,7 +68,14 @@ const Header = (properties) => {
 					<Logo />
 				</div>
 				<div className='search-bar-section'>
-					<SearchBar />
+					<Routes>
+						{ isUserLoggedIn && (
+							<Route path='/*' element={<SearchBar />} />
+
+						)}
+						
+					</Routes>
+					{/* <SearchBar /> */}
 				</div>
 				<div className='profile-pic-section'>
 					<button

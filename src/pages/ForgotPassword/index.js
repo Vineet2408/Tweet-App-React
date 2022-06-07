@@ -129,7 +129,7 @@ const ForgotPassword = (properties) => {
                         className="text-input"
                         name="newPassword"
                         required
-                        type="text"
+                        type="password"
                         placeholder="Enter your New Password"
                         defaultValue={newPassword}
                         onChange={newPasswordChangeHandler}
@@ -142,7 +142,7 @@ const ForgotPassword = (properties) => {
                         className="text-input"
                         name="confirmPassword"
                         required
-                        type="text"
+                        type="password"
                         placeholder="Enter your confirmPassword"
                         defaultValue={confirmPassword}
                         onChange={confirmPasswordChangeHandler}

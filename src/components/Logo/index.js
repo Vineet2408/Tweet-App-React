@@ -10,7 +10,7 @@ const Logo = (properties) => {
 			<div className='logo-wrapper'>
 				<img className='logo' src={LogoImage} alt="Logo"></img>
 			</div>
-			<p className="text-underline d-flex">Tweet-App</p>
+			<p className="text-underline-white d-flex logo-text">Tweet-App</p>
 		</div>
 	);
 };
