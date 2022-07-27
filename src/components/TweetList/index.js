@@ -37,8 +37,6 @@ const TweetList = (properties) => {
         return <h1>Loading...</h1>
     }
 
-    console.log(tweetList);
-
     return (
         <div>
             <ul className="tweet-list">

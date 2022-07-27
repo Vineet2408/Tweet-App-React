@@ -6,7 +6,6 @@ import './userList.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import avatar from '../../images/avatar.jpg';
 import { getAllUsers } from './action';
 
 function selector (state) {

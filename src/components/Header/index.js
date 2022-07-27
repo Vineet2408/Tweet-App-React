@@ -8,9 +8,8 @@ import { NavLink, Route, Routes } from 'react-router-dom';
 
 import MenuModal from './MenuModal';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../LoginForm/action';
-
 
 // className='header-navigation-button'
 export const LoggedInNav = (properties) => {
@@ -40,12 +39,24 @@ export const LoggedOutNav = (properties) => {
 		</ul>
 	);
 };
+
+function selector(state) {
+	return state.loginReducer;
+}
+
+function photoSelector(state) {
+    return state.photoUploadReducer;
+}
+
 const Header = (properties) => {
 
 	const {
 		profilePicSrc,
 	} = properties;
 	const dispatch = useDispatch();
+
+	const loginState = useSelector(selector);
+	const photoUploadState = useSelector(photoSelector);
 
 	const [showmodal, setShowModal] = React.useState(false);
 
@@ -58,6 +69,8 @@ const Header = (properties) => {
 	const logoutUserHandler = () => {
 		dispatch(logoutUser());
 	}
+
+	React.useEffect(()=>{console.log(loginState)},[loginState,photoUploadState])
 
 	const isUserLoggedIn = localStorage.getItem('isUserLoggedIn');
 	
@@ -83,10 +96,10 @@ const Header = (properties) => {
 						className='profile-button-wrapper'
 						onClick={showMenuModel}
 					>
-						<ProfilePic profilePicSrc={profilePicSrc} size={32} />
+						<ProfilePic profilePicSrc={photoUploadState.avatarLink || loginState.avatarLink} size={32} />
 					</button>
 					
-					{showmodal && <MenuModal method={logoutUserHandler}/> }
+					{showmodal && <MenuModal method={logoutUserHandler} toggle={showMenuModel}/> }
 				</div>
 			</div>
 			<div className='bottom-row-header'>
