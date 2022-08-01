@@ -12,6 +12,9 @@ import EditModal from './EditModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import ReplySection from '../UI/ReplySection';
 
+import axios from 'axios';
+
+import { PROFILE_PIC_NAME_API, DOWNLOAD_PROFILE_PIC_API } from '../../constants/api';
 
 function repliesSelector(state) {
     return state.repliesOfAllTweetReducer;
@@ -24,8 +27,6 @@ function tweetListSelector(state) {
 const Tweet = (properties) => {
     const { tweet } = properties;
 
-    console.log(tweet);
-
     const dispatch = useDispatch();
 
     let username = localStorage.getItem('username');
@@ -36,6 +37,8 @@ const Tweet = (properties) => {
     const [editable, setEditable] = React.useState(false);
 
     const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+
+    const [profilePicUrl, setProfilePicUrl] = React.useState('');
 
     const openEditModal = (event) => {
         event.preventDefault();
@@ -59,8 +62,14 @@ const Tweet = (properties) => {
     const allTweetsReducerState = useSelector(tweetListSelector);
     const repliesOfAllTweetReducerState = useSelector(repliesSelector);
 
-    React.useEffect(()=> {
-        console.log('hello = ',allTweetsReducerState , ' repliesOfAllTweetReducerState = ', repliesOfAllTweetReducerState);
+    React.useEffect( ()=> {
+        
+        axios({
+            method: 'get',
+            url: PROFILE_PIC_NAME_API + tweet.username,
+        }).then((response) => {
+            setProfilePicUrl(DOWNLOAD_PROFILE_PIC_API+response.data);
+        });
     },[allTweetsReducerState,repliesOfAllTweetReducerState]);
     
     
@@ -96,7 +105,7 @@ const Tweet = (properties) => {
                 <div className="col clgp-8">
                     <div className="row rowgp-16">
                         <div className="d-flex">
-                            <ProfilePic size={64} profilePicSrc={tweet.avatarLink} />
+                            <ProfilePic size={64} profilePicSrc={profilePicUrl} />
                         </div>
                         <div className="col flex-1 ">
                             <div className="col clgp-8">

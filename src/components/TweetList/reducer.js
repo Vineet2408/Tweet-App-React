@@ -17,8 +17,13 @@ export const tweetListReducer = (state = initialState, action) => {
             return list;
 
         case ADD_TWEET: 
-        list = [...state];
+        // list = [...state];
+        list = [];
         list.push(action.payload);
+        for (let i = 0; i < state.length; i++) {
+            const element = state[i];
+            list.push(element);
+        }
         console.log("after add = ",list);
         return list;
         

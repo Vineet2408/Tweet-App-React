@@ -6,6 +6,7 @@ const MenuModal = (properties) => {
 	const logoutButtonClickHandler = (event) => {
 		event.preventDefault();
 		properties.method();
+		properties.toggle(event);
 	};
 
 	return (

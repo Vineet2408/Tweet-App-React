@@ -3,13 +3,15 @@ import ProfilePic from '../UI/ProfilePic';
 
 import './user.css';
 
+import { DOWNLOAD_PROFILE_PIC_API } from '../../constants/api';
+
 const User = (properties) => {
 	const { user } = properties;
 	return (
 		<div className="user-wrapper">
 			<div className="row rowgp-16">
 				<div className="d-flex">
-					<ProfilePic profilePicSrc={user.avatarLink} size={32}/>
+					<ProfilePic profilePicSrc={DOWNLOAD_PROFILE_PIC_API+user.avatarLink} size={32}/>
 				</div>
 				<div className="col clgp-8" style={{flex:'1'}}>
 					<p className="tweet-username">{user.firstName}{" "}{user.lastName}</p>
