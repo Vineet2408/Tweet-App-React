@@ -1,10 +1,12 @@
 import { LOGIN_USER, LOGOUT_USER } from './action';
+import {PHOTO_UPLOAD} from '../ProfilePicUpload/action';
 
 let initialState = {
 	token: null,
 	userId: null,
 	isUserLoggedIn: false,
 	username: null,
+	avatarLink: '',
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -32,7 +34,12 @@ export const loginReducer = (state = initialState, action) => {
 			localStorage.removeItem('isUserLoggedIn');
             localStorage.removeItem('username');
 			return newState;
-
+		
+		case PHOTO_UPLOAD: 
+			newState = {
+				...state,
+				...action.payload,
+			};
 		default:
 			return state;
 	}

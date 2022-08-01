@@ -1,6 +1,6 @@
-export const apiPrefix = `http://localhost:8082`;
+export const apiPrefix = `http://34.201.45.192:8082`;
 
-export const authApiPrefix = `http://localhost:8081`;
+export const authApiPrefix = `http://3.91.102.70:8081`;
 console.log(apiPrefix);
 export const ADD_TWEET_API = apiPrefix + '/api/v1.0/tweets/username/add';
 
@@ -34,4 +34,10 @@ export const GET_ALL_USERS_API = apiPrefix + '/api/v1.0/tweets/users/all';
 export const GET_USER_BY_SEARCH_API =
 	apiPrefix + '/api/v1.0/tweets/user/search/username';
 
-export const PHOTO_UPLOAD_API = apiPrefix + '/';
+export const storageApiPrefix = `3.82.108.30:8083`;
+
+
+export let PHOTO_UPLOAD_API =`http://${storageApiPrefix}/file/update/profilepic/`;
+export let PROFILE_PIC_NAME_API = `http://${storageApiPrefix}/file/profilepicName/`;
+
+export let DOWNLOAD_PROFILE_PIC_API = `http://${storageApiPrefix}/file/download/`;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN_USER_API } from "../../constants/api";
+import { LOGIN_USER_API, PROFILE_PIC_NAME_API, DOWNLOAD_PROFILE_PIC_API } from "../../constants/api";
 
 
 export const LOGIN_USER = 'LOGIN_USER';
@@ -21,15 +21,25 @@ export const loginUser = (userCreds, setLoginFailed) => function (dispatch) {
         if(response.data.username !== undefined && response.data.username !== null) {
             let access_token = response.data.access_token;
             if (access_token !== undefined && access_token !== null) {
-                dispatch({
-                    payload:{
-                        token:response.data.access_token,
-                        userId:response.data.email,
-                        isUserLoggedIn:true,
-                        username:response.data.username
-                    },
-                    type: LOGIN_USER
-                });
+                axios({
+                    method: 'get',
+                    url: PROFILE_PIC_NAME_API + response.data.username,
+                }).then((responsePic) => {
+                    dispatch({
+                        payload:{
+                            token:response.data.access_token,
+                            userId:response.data.email,
+                            isUserLoggedIn:true,
+                            username:response.data.username,
+                            avatarLink: DOWNLOAD_PROFILE_PIC_API+responsePic.data,
+                        },
+                        type: LOGIN_USER
+                    });
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+                
             }
             else {
                 setLoginFailed(true);
@@ -53,4 +63,33 @@ export const logoutUser = () => function(dispatch) {
             username:null
         }
     });
+}
+
+export const  getProfilePicName = async (username) => {
+    return await axios({
+        method: 'get',
+        url: PROFILE_PIC_NAME_API + username,
+    });
+}
+
+export const setUserDetails = () => function (dispatch) {
+    axios({
+        method: 'get',
+        url: PROFILE_PIC_NAME_API + localStorage.getItem("username"),
+    }).then((response) => {
+        let username = localStorage.getItem("username");
+        let isUserLoggedIn = localStorage.getItem("isUserLoggedIn");
+        let token = localStorage.getItem("token");
+        let userId = localStorage.getItem("userId");
+        dispatch({
+            payload:{
+                token:token,
+                userId:userId,
+                isUserLoggedIn:true,
+                username:username,
+                avatarLink: DOWNLOAD_PROFILE_PIC_API+response.data,
+            },
+            type: LOGIN_USER
+        });
+    })
 }
