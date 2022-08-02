@@ -1,6 +1,6 @@
-export const apiPrefix = `http://localhost:8080`;
+export const apiPrefix = `http://localhost:8082`;
 
-export const authApiPrefix = `http://localhost:8082`;
+export const authApiPrefix = `http://localhost:8081`;
 
 export const ADD_TWEET_API = apiPrefix + '/api/v1.0/tweets/username/add';
 

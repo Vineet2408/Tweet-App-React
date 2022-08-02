@@ -60,18 +60,37 @@ const AddTweet = (properties) => {
     return (
         <div className="add-tweet-section">
             <div className="add-tweet-ask">
-                {!showReplyTo &&<p className="text-underline">Want to Post a new Tweet?</p> }
-                {showReplyTo &&<p className="text-underline">Want to Reply to this Tweet?</p> }
-                <button
+                {!showReplyTo && 
+                    <button className={`cursor-pointer ${wantToPost ? 'delete-button' : 'post-button'}`}
+                        style={{marginTop: '24px'}}
+                        onClick={toggleWantToPost}
+                    >
+                        
+                        {wantToPost
+                            ? <i className='fa fa-close' style={plusIconStyle} aria-hidden="true"></i>
+                            : 'Post New Tweet'}
+                    </button>
+                }
+                {showReplyTo &&
+                    <button className={`cursor-pointer ${wantToPost ? 'delete-button' : 'post-button mb-24'}`}
+                        onClick={toggleWantToPost}
+                    >
+                        
+                        {wantToPost
+                            ? <i className='fa fa-close' style={plusIconStyle} aria-hidden="true"></i>
+                            : 'Reply'}
+                    </button>
+                }
+                {/* <button
                     className="post-button toggle-add-post-button"
                     type="button"
                     onClick={toggleWantToPost}
                 >
                     <i className={wantToPost?"fa fa-close":"fa fa-plus"} style={plusIconStyle} aria-hidden="true"></i>
-                </button>
+                </button> */}
             </div>
             { wantToPost && 
-                <div className="add-tweet-form-section">
+                <div className={`add-tweet-form-section ${showReplyTo ? 'mb-24' : ''}`}>
                 
                     <form onSubmit={addTweetSubmitHanlder} className="add-tweet-form">
                         <label htmlFor="message">Add a Tweet</label>

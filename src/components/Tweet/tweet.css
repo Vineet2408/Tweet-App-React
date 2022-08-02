@@ -1,3 +1,6 @@
+.tweet-username {
+    color: #0875e1;
+}
 
 .hashTag {
     font-size: 14px;
@@ -16,6 +19,7 @@
 .voting-section {
     display: flex;
     flex-direction: row;
+    justify-content: end;
     column-gap: 24px;
     align-items: center;
     padding: 16px;

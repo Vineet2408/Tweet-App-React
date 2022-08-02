@@ -31,7 +31,7 @@ const ProfilePicUpload = (properties) => {
                     aria-hidden="true"
                     id="upload-photo-input"
                 />
-                <button className="post-button" type="button" onClick={uploadPhotoButtonClickHandler}>Upload Photo</button>
+                {/* <button className="post-button" type="button" onClick={uploadPhotoButtonClickHandler}>Upload Photo</button> */}
             </div>
         </div>
     );

@@ -103,7 +103,7 @@ const Tweet = (properties) => {
                         <div className="col flex-1 ">
                             <div className="col clgp-8">
                                 <div className="row space-between">
-                                    <p className="tweet-username"><b>{tweet.username}</b></p>
+                                    <p className="tweet-username">@{tweet.username}</p>
                                     {tweet.username === username &&
                                         <div className="row rowgp-8">
                                             <button type="button" className="put-button" onClick={openEditModal}>
@@ -129,8 +129,8 @@ const Tweet = (properties) => {
                     <div className="d-flex">
                         <span className="tweet-votes ">
                             <p className="tweet-votes-counts">{Object.keys(tweet.listOfLikes).length}</p>
-                            <button className="toggle-add-post-button" style={{backgroundColor:liked ?'green':'', color:liked ?'white':'black'}} onClick={likeClickHandler} type="button">
-                                <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+                            <button className="toggle-add-post-button cursor-pointer" style={{backgroundColor:liked ?'red':'', color:liked ?'white':'black'}} onClick={likeClickHandler} type="button">
+                                <i className="fa fa-heart" aria-hidden="true" style={{backgroundColor:liked ?'red':'', color:'red'}}></i>
                             </button>
                         </span>
                     </div>
@@ -144,8 +144,9 @@ const Tweet = (properties) => {
                     </div> */}
                     <div className="d-flex">
                         <span  className="tweet-votes">
-                            <button className="toggle-add-post-button" onClick={replyClickHandler} type="button">
-                                <i className="fa fa-comments-o" aria-hidden="true"></i>
+                            <button className="get-button" onClick={replyClickHandler} type="button">
+                                {/* <i className="fa fa-comments-o" aria-hidden="true"></i> */}
+                                Check Replies
                             </button>
                         </span>
                     </div>
